@@ -1,0 +1,64 @@
+@font-face {
+  font-family: "FontH1";
+  src: url("../conthrax/Conthrax-SemiBold.otf") format("opentype");
+}
+
+body {
+  background-color: #232324;
+  color: white;
+  font: 1.2rem "Fira Sans", sans-serif;
+  margin: 0;
+}
+
+nav > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav > ul > li > a {
+  text-decoration: none;
+  font-size: 25px;
+  color: white;
+}
+
+.articles-container {
+  display: flex;
+  gap: 5px;
+}
+
+article {
+  flex: 1;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+h1,
+h2 {
+  text-align: center;
+}
+
+h1 {
+  font-family: "FontH1", serif;
+  font-size: 70px;
+}
+
+h2 {
+  font-size: 30px;
+}
+
+article > p {
+  font-size: 20px;
+}
+
+footer {
+  text-align: center;
+  border: 2px solid black;
+}
+
+main > section > article > p {
+  border: 1px solid white;
+}
