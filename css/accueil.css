@@ -62,3 +62,8 @@ footer {
 main > section > article > p {
   border: 1px solid white;
 }
+
+header,
+footer {
+  background-color: black;
+}
