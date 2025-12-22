@@ -3,6 +3,18 @@
   src: url("../conthrax/Conthrax-SemiBold.otf") format("opentype");
 }
 
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 300%;
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}
+
 body {
   background-color: #232324;
   color: white;
@@ -66,4 +78,9 @@ main > section > article > p {
 header,
 footer {
   background-color: black;
+}
+
+p {
+  animation-duration: 3s;
+  animation-name: slidein;
 }
