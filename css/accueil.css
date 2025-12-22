@@ -81,6 +81,19 @@ footer {
 }
 
 p {
-  animation-duration: 3s;
+  animation-duration: 1.5s;
   animation-name: slidein;
+}
+
+footer {
+  display: flex;
+}
+
+footer a > img {
+  width: 50px;
+}
+
+footer > p,
+a > img {
+  text-align: center;
 }

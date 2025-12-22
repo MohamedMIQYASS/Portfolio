@@ -3,6 +3,18 @@
   src: url("../conthrax/Conthrax-SemiBold.otf") format("opentype");
 }
 
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 300%;
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}
+
 h1 {
   font-family: "FontH1", serif;
   font-size: 70px;
@@ -59,4 +71,19 @@ footer {
 footer {
   text-align: center;
   border: 2px solid black;
+}
+
+h2,
+article {
+  animation-duration: 1.5s;
+  animation-name: slidein;
+}
+
+section > h3,
+img {
+  text-align: center;
+}
+
+article > section {
+  text-align: center;
 }

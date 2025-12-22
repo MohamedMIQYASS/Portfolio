@@ -36,3 +36,28 @@ nav > ul > li > a {
   font-size: 25px;
   color: white;
 }
+
+h1,
+h2 {
+  text-align: center;
+}
+
+h1 {
+  font-family: "FontH1", serif;
+  font-size: 70px;
+}
+
+footer {
+  text-align: center;
+  border: 2px solid black;
+}
+
+header,
+footer {
+  background-color: black;
+}
+
+p {
+  animation-duration: 3s;
+  animation-name: slidein;
+}
