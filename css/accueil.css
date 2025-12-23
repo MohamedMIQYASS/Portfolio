@@ -22,21 +22,6 @@ body {
   margin: 0;
 }
 
-nav > ul {
-  list-style: none;
-  margin: 0;
-  padding: 0 30px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-nav > ul > li > a {
-  text-decoration: none;
-  font-size: 25px;
-  color: white;
-}
-
 .articles-container {
   display: flex;
   gap: 5px;
@@ -80,20 +65,55 @@ footer {
   background-color: black;
 }
 
-p {
+main > p {
   animation-duration: 1.5s;
   animation-name: slidein;
 }
 
-footer {
-  display: flex;
-}
-
-footer a > img {
+header > a > img {
   width: 50px;
 }
 
-footer > p,
-a > img {
+img {
+  display: block;
+  margin: auto;
+}
+
+footer > p {
   text-align: center;
+}
+
+header h1 {
+  margin-bottom: 2px;
+}
+
+header img {
+  margin-top: 0;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.nav-btn {
+  background: #1f1e1d;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 5px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1em;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.2s;
+}
+
+.nav-btn:hover {
+  background: #0056b3;
 }
