@@ -27,21 +27,6 @@ body {
   margin: 0;
 }
 
-nav > ul {
-  list-style: none;
-  margin: 0;
-  padding: 0 30px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-nav > ul > li > a {
-  text-decoration: none;
-  font-size: 25px;
-  color: white;
-}
-
 h1,
 h2 {
   text-align: center;
@@ -73,7 +58,6 @@ footer {
   border: 2px solid black;
 }
 
-h2,
 article {
   animation-duration: 1.5s;
   animation-name: slidein;
@@ -86,4 +70,31 @@ img {
 
 article > section {
   text-align: center;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.nav-btn {
+  background: #1f1e1d;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 5px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1em;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.2s;
+}
+
+.nav-btn:hover {
+  background: #0056b3;
 }

@@ -65,7 +65,7 @@ footer {
   background-color: black;
 }
 
-main > p {
+main > section > article > p {
   animation-duration: 1.5s;
   animation-name: slidein;
 }
