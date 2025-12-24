@@ -148,3 +148,7 @@ nav {
   align-items: center;
   margin-bottom: 30px;
 }
+
+article {
+  padding: 10px;
+}
