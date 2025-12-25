@@ -1,6 +1,6 @@
 @font-face {
   font-family: "FontH1";
-  src: url("../conthrax/Conthrax-SemiBold.otf") format("opentype");
+  src: url(../voxelpoint-font/VoxelpointDemo-LVO5G.ttf) format("opentype");
 }
 
 @keyframes slidein {
@@ -134,4 +134,12 @@ header > a > img {
 img {
   display: block;
   margin: auto;
+}
+
+header h1 {
+  margin-bottom: 2px;
+}
+
+header img {
+  margin-top: 0;
 }
