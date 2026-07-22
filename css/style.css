@@ -1,45 +1,98 @@
-/* La barre de navigation */
+/* ============================================================
+   PORTFOLIO — Feuille de styles
+   ============================================================ */
+
+
+/* ------------------------------------------------------------
+   1. TYPOGRAPHIE GLOBALE
+   Police et couleur du texte pour les titres et paragraphes
+   ------------------------------------------------------------ */
+h1,
+h2,
+h3,
+h4,
+p,
 nav ul {
-    display: flex; /* Alignement horizontal  */
-    justify-content: space-between; /* Espace entre élements  */
-    list-style-type: none; /* enlever les puces */
-    color:#ffff;
-
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-/* Texte sur la barre de navigation */
+h2,
+h3,
+h4,
+p {
+    color: black;
+}
+
+
+/* ------------------------------------------------------------
+   2. EN-TÊTE & NAVIGATION
+   Barre noire en haut avec le nom et les liens de menu
+   ------------------------------------------------------------ */
+
+/* Fond de l'en-tête */
+header {
+    background-color: black;
+}
+
+/* Liste des liens de navigation */
+nav ul {
+    display: flex;                  /* Aligne les éléments horizontalement */
+    justify-content: space-between; /* Répartit l'espace entre chaque lien */
+    list-style-type: none;          /* Supprime les puces de la liste */
+    color: #ffffff;                 /* Texte blanc sur fond noir */
+}
+
+/* Liens du menu (sans soulignement) */
 nav a {
-    text-decoration: none; /* Retirer les points  */
-
+    text-decoration: none;
 }
 
-/* Titre principal */
+/* Nom affiché dans la barre de navigation */
 h1 {
-    text-align: center; /* centrer le titre principal */
+    text-align: center;
 }
 
-/* Taille des logos des établissement */
-article img {
-    width: 100px; /* Largeur */
-    height: 100px; /* Hauteur */
-    object-fit: contain;
-}
 
-.ParcoursScolaire, .ParcoursPro {
-    display: flex;
-    gap: 30px;
-    flex-wrap: wrap;
-}
-
-.info  , .book , .work {
-    width: 20px; /* Largeur */
-    height: 20px; /* Hauteur */
-}
-
+/* ------------------------------------------------------------
+   3. TITRES DE SECTION (h2)
+   Titres principaux : Accueil, Parcours, Compétences...
+   ------------------------------------------------------------ */
 h2 {
     text-align: center;
 }
 
+
+/* ------------------------------------------------------------
+   4. EN-TÊTES DE SOUS-SECTION (h3 + icône)
+   Ligne "Parcours scolaire 📖" ou "Parcours Professionnel 💼"
+   ------------------------------------------------------------ */
+.section-header {
+    display: flex;          /* Aligne le h3 et l'image sur la même ligne */
+    align-items: center;    /* Centre verticalement h3 et icône */
+    gap: 10px;              /* Espace entre le titre et l'icône */
+    flex-basis: 100%;       /* Occupe toute la largeur (articles en dessous) */
+}
+
+.section-header h3 {
+    margin: 0;              /* Retire la marge par défaut du h3 */
+}
+
+
+/* ------------------------------------------------------------
+   5. SECTIONS — MISE EN PAGE FLEXBOX
+   Disposition horizontale des articles dans chaque section
+   ------------------------------------------------------------ */
+
+/* Parcours scolaire et professionnel */
+.ParcoursScolaire,
+.ParcoursPro {
+    display: flex;              /* Aligne les articles côte à côte */
+    justify-content: center;    /* Centre le groupe d'articles */
+    gap: 30px;                  /* Espace entre chaque article */
+    flex-wrap: wrap;            /* Retour à la ligne sur petit écran */
+}
+
+/* Section compétences (Réseau, Développement, Cybersécurité) */
 .Compétences {
     display: flex;
     justify-content: center;
@@ -47,46 +100,43 @@ h2 {
     flex-wrap: wrap;
 }
 
-header {
-    background-color: black;
-}
 
-h2 , h3 , h4 , p   {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    color: black;
-}
-
-h2 , h3 , h4 , p , nav ul {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-.boutoncv .Compétences {
-    display: flex;
-}
-
+/* ------------------------------------------------------------
+   6. ARTICLES (CARTES)
+   Encadrés pour chaque formation, stage ou compétence
+   ------------------------------------------------------------ */
 article {
     border: 0.01px solid black;
     border-radius: 15px;
-    padding: 15px; /* Espace entre le contenu et la bordure */
+    padding: 15px; /* Espace intérieur entre le contenu et la bordure */
 }
 
-.info, .book, .work {
+
+/* ------------------------------------------------------------
+   7. IMAGES
+   ------------------------------------------------------------ */
+
+/* Logos des établissements et entreprises dans les articles */
+article img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain; /* Garde les proportions sans déformer l'image */
+}
+
+/* Petites icônes : info, livre, travail */
+.info,
+.book,
+.work {
     width: 20px;
     height: 20px;
 }
 
-.section-header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-basis: 100%;
-}
 
-.section-header h3 {
-    margin: 0;
-}
+/* ------------------------------------------------------------
+   8. BOUTONS
+   ------------------------------------------------------------ */
 
-section {
-    justify-content: center;
+/* Bouton "MON CV" — styles à compléter selon vos besoins */
+.boutoncv {
+    /* Exemple : display: block; margin: 20px auto; */
 }
-
