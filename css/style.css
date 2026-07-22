@@ -17,15 +17,24 @@ h1 {
 
 }
 
-/* Taille des logos */
+/* Taille des logos des établissement */
 article img {
-    width: 100px;
-    height: 100px;
+    width: 100px; /* Largeur */
+    height: 100px; /* Hauteur */
     object-fit: contain;
 }
 
-.ParcoursScolaire {
+.ParcoursScolaire , .ParcoursPro {
     display: flex;
     gap: 30px;
     flex-wrap: wrap;
+}
+
+.info {
+    width: 20px; /* Largeur */
+    height: 20px; /* Hauteur */
+}
+
+h2 {
+    text-align: center;
 }
