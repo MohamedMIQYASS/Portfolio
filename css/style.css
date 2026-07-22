@@ -31,7 +31,7 @@ article img {
     flex-wrap: wrap;
 }
 
-.info {
+.info  , .book , .work {
     width: 20px; /* Largeur */
     height: 20px; /* Hauteur */
 }
@@ -58,9 +58,35 @@ h2 , h3 , h4 , p   {
 
 h2 , h3 , h4 , p , nav ul {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-
 }
 
 .boutoncv .Compétences {
     display: flex;
 }
+
+article {
+    border: 0.01px solid black;
+    border-radius: 15px;
+    padding: 15px; /* Espace entre le contenu et la bordure */
+}
+
+.info, .book, .work {
+    width: 20px;
+    height: 20px;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-basis: 100%;
+}
+
+.section-header h3 {
+    margin: 0;
+}
+
+section {
+    justify-content: center;
+}
+
