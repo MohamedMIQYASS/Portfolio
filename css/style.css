@@ -1,0 +1,16 @@
+/* La barre de navigation */
+nav ul {
+    display: flex; /* Alignement horizontal  */
+    justify-content: space-between; /* Espace entre élements  */
+}
+
+/* Texte sur la barre de navigation */
+nav a {
+    text-decoration: none; /* Retirer les points  */
+}
+
+/* Titre principal */
+h1 {
+    text-align: center; /* centrer le titre principal */
+
+}
