@@ -2,11 +2,13 @@
 nav ul {
     display: flex; /* Alignement horizontal  */
     justify-content: space-between; /* Espace entre élements  */
+    list-style-type: none; /* enlever les puces */
 }
 
 /* Texte sur la barre de navigation */
 nav a {
     text-decoration: none; /* Retirer les points  */
+
 }
 
 /* Titre principal */
