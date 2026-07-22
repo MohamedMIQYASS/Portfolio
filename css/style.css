@@ -8,13 +8,11 @@ nav ul {
 /* Texte sur la barre de navigation */
 nav a {
     text-decoration: none; /* Retirer les points  */
-
 }
 
 /* Titre principal */
 h1 {
     text-align: center; /* centrer le titre principal */
-
 }
 
 /* Taille des logos des établissement */
@@ -24,7 +22,7 @@ article img {
     object-fit: contain;
 }
 
-.ParcoursScolaire , .ParcoursPro {
+.ParcoursScolaire, .ParcoursPro {
     display: flex;
     gap: 30px;
     flex-wrap: wrap;
@@ -37,4 +35,10 @@ article img {
 
 h2 {
     text-align: center;
+}
+
+.Compétences {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
 }
