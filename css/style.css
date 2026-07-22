@@ -2,27 +2,17 @@
    PORTFOLIO — Feuille de styles
    ============================================================ */
 
-
 /* ------------------------------------------------------------
    1. TYPOGRAPHIE GLOBALE
    Police et couleur du texte pour les titres et paragraphes
    ------------------------------------------------------------ */
-h1,
-h2,
-h3,
-h4,
-p,
-nav ul {
+h1,h2,h3,h4,p,nav ul {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-h2,
-h3,
-h4,
-p {
+h2,h3,h4,p {
     color: black;
 }
-
 
 /* ------------------------------------------------------------
    2. EN-TÊTE & NAVIGATION
@@ -52,7 +42,6 @@ h1 {
     text-align: center;
 }
 
-
 /* ------------------------------------------------------------
    3. TITRES DE SECTION (h2)
    Titres principaux : Accueil, Parcours, Compétences...
@@ -60,7 +49,6 @@ h1 {
 h2 {
     text-align: center;
 }
-
 
 /* ------------------------------------------------------------
    4. EN-TÊTES DE SOUS-SECTION (h3 + icône)
@@ -84,8 +72,7 @@ h2 {
    ------------------------------------------------------------ */
 
 /* Parcours scolaire et professionnel */
-.ParcoursScolaire,
-.ParcoursPro {
+.ParcoursScolaire,.ParcoursPro {
     display: flex;              /* Aligne les articles côte à côte */
     justify-content: center;    /* Centre le groupe d'articles */
     gap: 30px;                  /* Espace entre chaque article */
@@ -100,7 +87,6 @@ h2 {
     flex-wrap: wrap;
 }
 
-
 /* ------------------------------------------------------------
    6. ARTICLES (CARTES)
    Encadrés pour chaque formation, stage ou compétence
@@ -110,7 +96,6 @@ article {
     border-radius: 15px;
     padding: 15px; /* Espace intérieur entre le contenu et la bordure */
 }
-
 
 /* ------------------------------------------------------------
    7. IMAGES
@@ -124,13 +109,10 @@ article img {
 }
 
 /* Petites icônes : info, livre, travail */
-.info,
-.book,
-.work {
+.info,.book,.work {
     width: 20px;
     height: 20px;
 }
-
 
 /* ------------------------------------------------------------
    8. BOUTONS
