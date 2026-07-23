@@ -1,29 +1,33 @@
-/* ============================================================
-   PORTFOLIO — Feuille de styles
-   ============================================================ */
-
-
-/* ------------------------------------------------------------
-   1. TYPOGRAPHIE GLOBALE
-   ------------------------------------------------------------ */
-
-/* Sélectionne les titres, paragraphes et la liste du menu */
-h1,h2,h3,h4,p,nav ul {
-    font-family: Verdana, Geneva, Tahoma, sans-serif; /* Police utilisée sur tout le site */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
 }
 
-/* Couleur du texte pour les titres et paragraphes du contenu principal */
-h2,h3,h4,p {
-    color: black; /* Texte en noir */
+body {
+    background-color: black;
+    margin: 0;
+    padding: 0;
 }
 
-/* ------------------------------------------------------------
-   2. EN-TÊTE & NAVIGATION
-   ------------------------------------------------------------ */
+h1, h2, h3, h4, p, nav ul {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
 
-/* Conteneur de la barre de navigation en haut de page */
+h2, h3, h4, p {
+    color: black;
+}
+
+main {
+    background-color: white;
+}
+
+section {
+    padding: 60px 20px;
+    border-bottom: 1px solid #eee;
+}
+
 header {
-    background-color: black; /* Fond noir pour l'en-tête */
+    background-color: black;
     display: flex;
     position: sticky;
     top: 0;
@@ -31,109 +35,79 @@ header {
     padding: 10px 0;
 }
 
-/* Barre de navigation */
 nav {
-    display: flex;              /* Active Flexbox sur la nav */
-    justify-content: center;    /* Centre le contenu horizontalement */
-    align-items: center;        /* Centre le contenu verticalement */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Liste des liens du menu (ACCUEIL, PARCOURS, etc.) */
 nav ul {
-    display: flex;              /* Aligne les liens horizontalement */
-    justify-content: center;    /* Centre les liens dans la barre */
-    align-items: center;        /* Aligne verticalement les liens */
-    gap: 20px;                  /* Espace de 20px entre chaque lien */
-    list-style: none;           /* Supprime les puces de la liste */
-    color: #ffffff;             /* Texte blanc sur fond noir */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    list-style: none;
+    color: #ffffff;
     margin: 0;
     padding: 0;
     flex-wrap: wrap;
 }
 
-/* Liens cliquables du menu */
 nav a {
-    text-decoration: none; /* Supprime le soulignement des liens */
+    text-decoration: none;
     color: white;
     font-weight: bold;
     transition: color 0.2s ease-in-out;
 }
 
 nav a:hover {
-    color: #00aaff
+    color: #00aaff;
 }
 
-/* Nom "Mohamed MIQYASS" dans la barre de navigation */
 h1 {
-    text-align: center; /* Centre le nom dans son espace */
+    text-align: center;
 }
 
-
-/* ------------------------------------------------------------
-   3. TITRES DE SECTION (h2)
-   ------------------------------------------------------------ */
-
-/* Titres principaux : Bienvenue, Mon parcours, Compétences... */
 h2 {
-    text-align: center; /* Centre les grands titres de section */
+    text-align: center;
     font-size: 2rem;
     margin-bottom: 40px;
 }
 
-
-/* ------------------------------------------------------------
-   4. EN-TÊTES DE SOUS-SECTION (h3 + icône)
-   ------------------------------------------------------------ */
-
-/* Conteneur du titre h3 et de son icône (livre, travail...) */
 .section-header {
-    display: flex;       /* Met le h3 et l'image sur la même ligne */
-    align-items: center; /* Centre verticalement le titre et l'icône */
-    gap: 10px;           /* Espace de 10px entre le h3 et l'icône */
-    flex-basis: 100%;    /* Force l'en-tête à prendre toute la largeur */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-basis: 100%;
     justify-content: center;
     margin-top: 20px;
     margin-bottom: 20px;
 }
 
-/* Titre h3 à l'intérieur de .section-header */
 .section-header h3 {
-    margin: 0; /* Supprime la marge par défaut du navigateur sur le h3 */
+    margin: 0;
 }
 
-
-/* ------------------------------------------------------------
-   5. SECTIONS — MISE EN PAGE FLEXBOX
-   ------------------------------------------------------------ */
-
-/* Sections Parcours scolaire et Parcours professionnel */
-.ParcoursScolaire,.ParcoursPro {
-    display: flex;           /* Aligne les articles côte à côte */
-    justify-content: center; /* Centre le groupe d'articles horizontalement */
-    gap: 30px;               /* Espace de 30px entre chaque article */
-    flex-wrap: wrap;         /* Passe à la ligne si l'écran est trop petit */
+.ParcoursScolaire, .ParcoursPro {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
     margin-bottom: 40px;
 }
 
-/* Section Compétences (Réseau, Développement, Cybersécurité) */
 .Compétences {
-    display: flex;           /* Aligne les cartes de compétences horizontalement */
-    justify-content: center; /* Centre les cartes dans la section */
-    gap: 170px;              /* Grand espace entre chaque compétence */
-    flex-wrap: wrap;         /* Retour à la ligne sur petit écran */
+    display: flex;
+    justify-content: center;
+    gap: 170px;
+    flex-wrap: wrap;
     margin-bottom: 30px;
 }
 
-
-/* ------------------------------------------------------------
-   6. ARTICLES (CARTES)
-   ------------------------------------------------------------ */
-
-/* Cartes pour chaque formation, stage ou compétence */
 article {
-    border: 1px solid #ccc; /* Fine bordure noire autour de la carte */
-    border-radius: 15px;        /* Coins arrondis de la carte */
-    padding: 20px;              /* Espace intérieur entre le contenu et la bordure */
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    padding: 20px;
     background-color: #fafafa;
     transition: transform 0.2s, box-shadow 0.2s;
 }
@@ -147,6 +121,12 @@ article:hover {
     text-align: center;
 }
 
+article img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
+
 .Compétences > article img {
     display: block;
     margin-left: auto;
@@ -155,22 +135,51 @@ article:hover {
     height: auto;
 }
 
-
-/* ------------------------------------------------------------
-   7. IMAGES
-   ------------------------------------------------------------ */
-
-/* Logos des établissements et entreprises dans les articles */
-article img {
-    width: 100px;        /* Largeur fixe des logos */
-    height: 100px;       /* Hauteur fixe des logos */
-    object-fit: contain; /* Garde les proportions sans déformer l'image */
+.info, .book, .work {
+    width: 20px;
+    height: 20px;
 }
 
-/* Petites icônes : info, livre ouvert, travail */
-.info,.book,.work {
-    width: 20px;  /* Largeur des petites icônes */
-    height: 20px; /* Hauteur des petites icônes */
+.lk {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    vertical-align: middle;
+}
+
+.git {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    vertical-align: middle;
+}
+
+.cursor {
+    position: relative;
+    width: 24em;
+    margin: 0 auto;
+    border-right: 2px solid rgba(255,255,255,.75);
+    font-size: 30px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    transform: translateY(-50%);
+}
+
+.typewriter-animation {
+    animation: 
+      typewriter 2s steps(150) 1s 1 normal both, 
+      blinkingCursor 500ms steps(50) infinite normal;
+}
+
+@keyframes typewriter {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blinkingCursor {
+    from { border-right-color: rgba(255,255,255,.75); }
+    to { border-right-color: transparent; }
 }
 
 footer {
@@ -180,71 +189,4 @@ footer {
 footer > p {
     color: white;
     text-align: center;
-}
-
-body {
-    background-color: black;
-}
-
-main {
-    background-color: white;
-}
-
-.Compétences > article  img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 100%;
-    height: auto;
-}
-
-.lk {
-    width: 80px; 
-    height: 80px;
-    object-fit: contain;
-    vertical-align: middle;
-}
-
-.git {
-    width: 60px; 
-    height: 60px;
-    object-fit: contain;
-    vertical-align: middle;
-
-}
-
-.cursor{
-    position: relative;
-    width: 24em;
-    margin: 0 auto;
-    border-right: 2px solid rgba(255,255,255,.75);
-    font-size: 30px;
-    text-align: center;
-    white-space: nowrap;
-    overflow: hidden;
-    transform: translateY(-50%);    
-}
-/* Animation */
-.typewriter-animation {
-  animation: 
-    typewriter 2s steps(150) 1s 1 normal both, 
-    blinkingCursor 500ms steps(50) infinite normal;
-}
-@keyframes typewriter {
-  from { width: 0; }
-  to { width: 100%; }
-}
-@keyframes blinkingCursor{
-  from { border-right-color: rgba(255,255,255,.75); }
-  to { border-right-color: transparent; }
-}
-
-html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 100px;
-}
-
-section {
-    padding: 60px 20px;
-    border-bottom: 1px solid #eee;
 }
