@@ -2,100 +2,129 @@
    PORTFOLIO — Feuille de styles
    ============================================================ */
 
+
 /* ------------------------------------------------------------
    1. TYPOGRAPHIE GLOBALE
-   Police et couleur du texte pour les titres et paragraphes
    ------------------------------------------------------------ */
+
+/* Sélectionne les titres, paragraphes et la liste du menu */
 h1,h2,h3,h4,p,nav ul {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif; /* Police utilisée sur tout le site */
 }
 
+/* Couleur du texte pour les titres et paragraphes du contenu principal */
 h2,h3,h4,p {
-    color: black;
+    color: black; /* Texte en noir */
 }
 
 /* ------------------------------------------------------------
    2. EN-TÊTE & NAVIGATION
-   Barre noire en haut avec le nom et les liens de menu
    ------------------------------------------------------------ */
 
-/* Fond de l'en-tête */
+/* Conteneur de la barre de navigation en haut de page */
 header {
-    background-color: black;
+    background-color: black; /* Fond noir pour l'en-tête */
+    display: flex;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 10px 0;
 }
 
-/* Liste des liens de navigation */
+/* Barre de navigation */
+nav {
+    display: flex;              /* Active Flexbox sur la nav */
+    justify-content: center;    /* Centre le contenu horizontalement */
+    align-items: center;        /* Centre le contenu verticalement */
+}
+
+/* Liste des liens du menu (ACCUEIL, PARCOURS, etc.) */
 nav ul {
-    display: flex;                  /* Aligne les éléments horizontalement */
-    justify-content: space-between; /* Répartit l'espace entre chaque lien */
-    list-style-type: none;          /* Supprime les puces de la liste */
-    color: #ffffff;                 /* Texte blanc sur fond noir */
+    display: flex;              /* Aligne les liens horizontalement */
+    justify-content: center;    /* Centre les liens dans la barre */
+    align-items: center;        /* Aligne verticalement les liens */
+    gap: 20px;                  /* Espace de 20px entre chaque lien */
+    list-style: none;           /* Supprime les puces de la liste */
+    color: #ffffff;             /* Texte blanc sur fond noir */
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
 }
 
-/* Liens du menu (sans soulignement) */
+/* Liens cliquables du menu */
 nav a {
-    text-decoration: none;
+    text-decoration: none; /* Supprime le soulignement des liens */
+    color: white;
+    font-weight: bold;
+    transition: color 0.2s ease-in-out;
 }
 
-/* Nom affiché dans la barre de navigation */
+/* Nom "Mohamed MIQYASS" dans la barre de navigation */
 h1 {
-    text-align: center;
+    text-align: center; /* Centre le nom dans son espace */
 }
+
 
 /* ------------------------------------------------------------
    3. TITRES DE SECTION (h2)
-   Titres principaux : Accueil, Parcours, Compétences...
    ------------------------------------------------------------ */
+
+/* Titres principaux : Bienvenue, Mon parcours, Compétences... */
 h2 {
-    text-align: center;
+    text-align: center; /* Centre les grands titres de section */
 }
+
 
 /* ------------------------------------------------------------
    4. EN-TÊTES DE SOUS-SECTION (h3 + icône)
-   Ligne "Parcours scolaire 📖" ou "Parcours Professionnel 💼"
    ------------------------------------------------------------ */
+
+/* Conteneur du titre h3 et de son icône (livre, travail...) */
 .section-header {
-    display: flex;          /* Aligne le h3 et l'image sur la même ligne */
-    align-items: center;    /* Centre verticalement h3 et icône */
-    gap: 10px;              /* Espace entre le titre et l'icône */
-    flex-basis: 100%;       /* Occupe toute la largeur (articles en dessous) */
+    display: flex;       /* Met le h3 et l'image sur la même ligne */
+    align-items: center; /* Centre verticalement le titre et l'icône */
+    gap: 10px;           /* Espace de 10px entre le h3 et l'icône */
+    flex-basis: 100%;    /* Force l'en-tête à prendre toute la largeur */
 }
 
+/* Titre h3 à l'intérieur de .section-header */
 .section-header h3 {
-    margin: 0;              /* Retire la marge par défaut du h3 */
+    margin: 0; /* Supprime la marge par défaut du navigateur sur le h3 */
 }
 
 
 /* ------------------------------------------------------------
    5. SECTIONS — MISE EN PAGE FLEXBOX
-   Disposition horizontale des articles dans chaque section
    ------------------------------------------------------------ */
 
-/* Parcours scolaire et professionnel */
+/* Sections Parcours scolaire et Parcours professionnel */
 .ParcoursScolaire,.ParcoursPro {
-    display: flex;              /* Aligne les articles côte à côte */
-    justify-content: center;    /* Centre le groupe d'articles */
-    gap: 30px;                  /* Espace entre chaque article */
-    flex-wrap: wrap;            /* Retour à la ligne sur petit écran */
+    display: flex;           /* Aligne les articles côte à côte */
+    justify-content: center; /* Centre le groupe d'articles horizontalement */
+    gap: 30px;               /* Espace de 30px entre chaque article */
+    flex-wrap: wrap;         /* Passe à la ligne si l'écran est trop petit */
 }
 
-/* Section compétences (Réseau, Développement, Cybersécurité) */
+/* Section Compétences (Réseau, Développement, Cybersécurité) */
 .Compétences {
-    display: flex;
-    justify-content: center;
-    gap: 170px;
-    flex-wrap: wrap;
+    display: flex;           /* Aligne les cartes de compétences horizontalement */
+    justify-content: center; /* Centre les cartes dans la section */
+    gap: 170px;              /* Grand espace entre chaque compétence */
+    flex-wrap: wrap;         /* Retour à la ligne sur petit écran */
 }
+
 
 /* ------------------------------------------------------------
    6. ARTICLES (CARTES)
-   Encadrés pour chaque formation, stage ou compétence
    ------------------------------------------------------------ */
+
+/* Cartes pour chaque formation, stage ou compétence */
 article {
-    border: 0.01px solid black;
-    border-radius: 15px;
-    padding: 15px; /* Espace intérieur entre le contenu et la bordure */
+    border: 0.01px solid black; /* Fine bordure noire autour de la carte */
+    border-radius: 15px;        /* Coins arrondis de la carte */
+    padding: 15px;              /* Espace intérieur entre le contenu et la bordure */
 }
+
 
 /* ------------------------------------------------------------
    7. IMAGES
@@ -103,22 +132,86 @@ article {
 
 /* Logos des établissements et entreprises dans les articles */
 article img {
-    width: 100px;
-    height: 100px;
+    width: 100px;        /* Largeur fixe des logos */
+    height: 100px;       /* Hauteur fixe des logos */
     object-fit: contain; /* Garde les proportions sans déformer l'image */
 }
 
-/* Petites icônes : info, livre, travail */
+/* Petites icônes : info, livre ouvert, travail */
 .info,.book,.work {
-    width: 20px;
-    height: 20px;
+    width: 20px;  /* Largeur des petites icônes */
+    height: 20px; /* Hauteur des petites icônes */
 }
 
-/* ------------------------------------------------------------
-   8. BOUTONS
-   ------------------------------------------------------------ */
+footer {
+    background-color: black;
+}
 
-/* Bouton "MON CV" — styles à compléter selon vos besoins */
-.boutoncv {
-    /* Exemple : display: block; margin: 20px auto; */
+footer > p {
+    color: white;
+    text-align: center;
+}
+
+body {
+    background-color: black;
+}
+
+main {
+    background-color: white;
+}
+
+.Compétences > article  img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    height: auto;
+}
+
+.lk {
+    width: 80px; 
+    height: 80px;
+    object-fit: contain;
+}
+
+.git {
+    width: 60px; 
+    height: 60px;
+    object-fit: contain;
+}
+
+.cursor{
+    position: relative;
+    width: 24em;
+    margin: 0 auto;
+    border-right: 2px solid rgba(255,255,255,.75);
+    font-size: 30px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    transform: translateY(-50%);    
+}
+/* Animation */
+.typewriter-animation {
+  animation: 
+    typewriter 2s steps(150) 1s 1 normal both, 
+    blinkingCursor 500ms steps(50) infinite normal;
+}
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+@keyframes blinkingCursor{
+  from { border-right-color: rgba(255,255,255,.75); }
+  to { border-right-color: transparent; }
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+}
+
+section {
+    padding: 60px 20px;
+    border-bottom: 1px solid #eee;
 }
