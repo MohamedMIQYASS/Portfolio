@@ -3,6 +3,12 @@ html {
     scroll-padding-top: 100px;
 }
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
 body {
     background-color: black;
     margin: 0;
@@ -11,6 +17,16 @@ body {
 
 h1, h2, h3, h4, p, nav ul {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h1{
+    font-size: 80px;
+    text-align: left;
+    margin-left: 0;
+    padding-left: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
 }
 
 h2, h3, h4, p {
@@ -22,51 +38,88 @@ main {
 }
 
 section {
-    padding: 60px 20px;
+    padding: 60px 20px;a
     border-bottom: 1px solid #eee;
 }
 
 header {
     background-color: black;
     display: flex;
+    justify-content: flex-start;
+    align-items: center;
     position: sticky;
     top: 0;
     z-index: 1000;
-    padding: 10px 0;
+    padding: 10px 20px;
+    min-height: 80px; /* Augmenté légèrement pour l'esthétique */
 }
 
 nav {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    width: auto; /* Laisser la barre s'adapter à son contenu */
+    background-color: #1a1a1a; /* Fond sombre de la barre de nav comme sur l'image */
+    padding: 10px 20px;
+    border-radius: 50px; /* Bords très arrondis comme sur l'image */
+    position: relative; /* Référence pour la position absolue du blob */
+    overflow: hidden; /* Pour que le blob ne dépasse pas */
 }
 
 nav ul {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    gap: 20px;
+    gap: 15px; /* Espace réduit pour un look plus compact */
     list-style: none;
     color: #ffffff;
     margin: 0;
     padding: 0;
-    flex-wrap: wrap;
+    z-index: 2; /* Pour être au-dessus du blob */
 }
 
 nav a {
     text-decoration: none;
     color: white;
     font-weight: bold;
-    transition: color 0.2s ease-in-out;
+    font-size: 14px;
+    padding: 10px 15px; /* Espacement interne pour la zone de survol */
+    display: block; /* Important pour que le JS calcule bien la taille */
+    transition: color 0.3s ease; /* Transition douce pour la couleur du texte */
+    position: relative;
 }
 
 nav a:hover {
-    color: #00aaff;
+    color: #ffffff; /* Reste blanc */
 }
 
-h1 {
-    text-align: center;
+nav li a img {
+    vertical-align: middle;
+    transition: transform 0.3s ease;
 }
+
+nav li a:hover img {
+    transform: scale(1.1); /* Léger grossissement de l'icône au survol */
+}
+
+.nav-blob {
+    position: absolute;
+    height: 100%; /* Prend toute la hauteur de nav */
+    background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%); /* Dégradé bleu-vert de l'image */
+    border-radius: 50px; /* Mêmes arrondis que la barre */
+    top: 0;
+    left: 0;
+    width: 0; /* Taille initiale nulle, gérée par JS */
+    opacity: 0; /* Invisible par défaut */
+    z-index: 1; /* Derrière le texte */
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1); /* Mouvement fluide et réactif */
+    pointer-events: none; /* Ne bloque pas les clics sur les liens */
+}
+
+nav a.active ~ .nav-blob {
+    opacity: 1;
+}
+
+
 
 h2 {
     text-align: center;
@@ -141,29 +194,27 @@ article img {
 }
 
 .lk {
-    width: 80px;
-    height: 80px;
+    width: 35px;  
+    height: 35px;
     object-fit: contain;
-    vertical-align: middle;
 }
 
 .git {
-    width: 60px;
-    height: 60px;
+    width: 30px;  /* Au lieu de 60px */
+    height: 30px;
     object-fit: contain;
-    vertical-align: middle;
 }
 
 .cursor {
     position: relative;
     width: 24em;
     margin: 0 auto;
-    border-right: 2px solid rgba(255,255,255,.75);
+    border-right: 2px solid rgba(0, 0, 0, 0.75); /* Curseur noir pour être visible sur fond blanc */
     font-size: 30px;
     text-align: center;
     white-space: nowrap;
     overflow: hidden;
-    transform: translateY(-50%);
+    /* Suppression de transform: translateY(-50%); qui faisait remonter le titre sur le header */
 }
 
 .typewriter-animation {
@@ -178,7 +229,7 @@ article img {
 }
 
 @keyframes blinkingCursor {
-    from { border-right-color: rgba(255,255,255,.75); }
+    from { border-right-color: rgba(0, 0, 0, 0.75); }
     to { border-right-color: transparent; }
 }
 
@@ -190,3 +241,16 @@ footer > p {
     color: white;
     text-align: center;
 }
+
+main h1 {
+    margin-top: 50px; 
+}
+
+.header-container {
+    display: flex;
+    justify-content: flex-start; /* Aligne le contenu tout à gauche */
+    align-items: center;        /* Centre verticalement si besoin */
+    width: 100%;
+  }
+
+ 
