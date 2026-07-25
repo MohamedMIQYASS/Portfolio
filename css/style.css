@@ -253,4 +253,68 @@ main h1 {
     width: 100%;
   }
 
+  @media screen and max-width: 768px {
+
+    /* --- 1. Titre Principal (H1) --- */
+    /* Ton H1 était réglé à 80px et en position absolue, ce qui le fait dépasser sur mobile */
+    h1 {
+        font-size: 32px !important;
+        position: static !important;
+        text-align: center !important;
+        margin-top: 20px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    .cursor {
+        width: 100% !important;
+        font-size: 20px !important;
+    }
+
+    /* --- 2. Menu de Navigation --- */
+    nav {
+        border-radius: 20px; /* Moins arrondi pour prendre moins de place */
+        padding: 8px;
+    }
+
+    nav ul {
+        justify-content: center; /* Centre les éléments */
+        gap: 8px; /* Réduit l'espace entre les liens */
+    }
+
+    nav a {
+        font-size: 11px; /* Texte plus petit pour que tout rentre */
+        padding: 6px 8px;
+    }
+
+    .lk, .git {
+        width: 20px !important;
+        height: 20px !important;
+    }
+
+    /* La bulle s'adapte aussi sur mobile */
+    .nav-blob {
+        border-radius: 20px;
+    }
+
+    /* --- 3. Sections & Textes --- */
+    h2 {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+
+    .slides1, .slides2, .slides3 {
+        padding: 20px 10px;
+    }
+
+    .ParcoursScolaire, .ParcoursPro, .Competences {
+        gap: 15px; /* Moins d'espace vertical entre les cartes */
+    }
+
+    article {
+        width: 100%; /* Les cartes prennent toute la largeur disponible */
+        margin-bottom: 10px;
+    }
+}
+
  
