@@ -328,3 +328,9 @@ main h1 {
 .slides3 article {
     background-color: #F0EDED;
 }
+
+.slides1 p {
+    width: 50%;
+    margin-left: 15px;
+    font-size: 20px;
+}
