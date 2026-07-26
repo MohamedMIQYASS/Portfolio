@@ -7,7 +7,7 @@ html {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
+}
 
 body {
     background-color: black;
@@ -19,7 +19,7 @@ h1, h2, h3, h4, p, nav ul {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-h1{
+h1 {
     font-size: 80px;
     text-align: left;
     margin-left: 0;
@@ -38,7 +38,7 @@ main {
 }
 
 section {
-    padding: 60px 20px;a
+    padding: 60px 20px;
     border-bottom: 1px solid #eee;
 }
 
@@ -51,30 +51,30 @@ header {
     top: 0;
     z-index: 1000;
     padding: 10px 20px;
-    min-height: 80px; /* Augmenté légèrement pour l'esthétique */
+    min-height: 80px;
 }
 
 nav {
     display: flex;
     justify-content: flex-start;
-    width: auto; /* Laisser la barre s'adapter à son contenu */
-    background-color: #1a1a1a; /* Fond sombre de la barre de nav comme sur l'image */
+    width: auto;
+    background-color: #1a1a1a;
     padding: 10px 20px;
-    border-radius: 50px; /* Bords très arrondis comme sur l'image */
-    position: relative; /* Référence pour la position absolue du blob */
-    overflow: hidden; /* Pour que le blob ne dépasse pas */
+    border-radius: 50px;
+    position: relative;
+    overflow: hidden;
 }
 
 nav ul {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    gap: 15px; /* Espace réduit pour un look plus compact */
+    gap: 15px;
     list-style: none;
     color: #ffffff;
     margin: 0;
     padding: 0;
-    z-index: 2; /* Pour être au-dessus du blob */
+    z-index: 2;
 }
 
 nav a {
@@ -82,14 +82,14 @@ nav a {
     color: white;
     font-weight: bold;
     font-size: 14px;
-    padding: 10px 15px; /* Espacement interne pour la zone de survol */
-    display: block; /* Important pour que le JS calcule bien la taille */
-    transition: color 0.3s ease; /* Transition douce pour la couleur du texte */
+    padding: 10px 15px;
+    display: block;
+    transition: color 0.3s ease;
     position: relative;
 }
 
 nav a:hover {
-    color: #ffffff; /* Reste blanc */
+    color: #ffffff;
 }
 
 nav li a img {
@@ -98,28 +98,26 @@ nav li a img {
 }
 
 nav li a:hover img {
-    transform: scale(1.1); /* Léger grossissement de l'icône au survol */
+    transform: scale(1.1);
 }
 
 .nav-blob {
     position: absolute;
-    height: 100%; /* Prend toute la hauteur de nav */
-    background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%); /* Dégradé bleu-vert de l'image */
-    border-radius: 50px; /* Mêmes arrondis que la barre */
+    height: 100%;
+    background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
+    border-radius: 50px;
     top: 0;
     left: 0;
-    width: 0; /* Taille initiale nulle, gérée par JS */
-    opacity: 0; /* Invisible par défaut */
-    z-index: 1; /* Derrière le texte */
-    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1); /* Mouvement fluide et réactif */
-    pointer-events: none; /* Ne bloque pas les clics sur les liens */
+    width: 0;
+    opacity: 0;
+    z-index: 1;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    pointer-events: none;
 }
 
 nav a.active ~ .nav-blob {
     opacity: 1;
 }
-
-
 
 h2 {
     text-align: center;
@@ -149,10 +147,11 @@ h2 {
     margin-bottom: 40px;
 }
 
-.Compétences {
+.Competences {
     display: flex;
-    justify-content: center;
-    gap: 170px;
+    align-items: center;
+    min-height: 200px;
+    gap: 30px;
     flex-wrap: wrap;
     margin-bottom: 30px;
 }
@@ -170,8 +169,10 @@ article:hover {
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
-.Compétences > article {
-    text-align: center;
+
+.skill-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
 article img {
@@ -180,41 +181,103 @@ article img {
     object-fit: contain;
 }
 
-.Compétences > article img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 100%;
-    height: auto;
-}
-
 .info, .book, .work {
-    width: 20px;
-    height: 20px;
+    width: 20px !important;
+    height: 20px !important;
 }
 
 .lk {
-    width: 35px;  
-    height: 35px;
+    width: 35px !important;  
+    height: 35px !important;
     object-fit: contain;
 }
 
 .git {
-    width: 30px;  /* Au lieu de 60px */
-    height: 30px;
+    width: 30px !important;
+    height: 30px !important;
     object-fit: contain;
 }
+
+/* =========================================================
+   GRILLES DES COMPÉTENCES (ALIGNEMENT HORIZONTAL) 
+   ========================================================= */
+
+article.RESEAU {
+    display: flex !important;
+    flex-direction: row !important; 
+    flex-wrap: wrap !important; 
+    justify-content: center !important;
+    align-items: flex-start !important;
+    gap: 20px !important; 
+    width: auto !important;
+    max-width: 100%;
+}
+
+article.DEV {
+    display: flex !important;
+    flex-direction: row !important; 
+    flex-wrap: wrap !important; 
+    justify-content: center !important;
+    align-items: flex-start !important;
+    gap: 20px !important; 
+    width: auto !important;
+    max-width: 100%;
+}
+
+article.CYBER {
+    display: flex !important;
+    flex-direction: row !important; 
+    flex-wrap: wrap !important; 
+    justify-content: center !important;
+    align-items: flex-start !important;
+    gap: 20px !important; 
+    width: auto !important;
+    max-width: 100%;
+
+}
+
+.skill-item {
+    display: flex !important;
+    flex-direction: column !important; 
+    align-items: center !important; 
+    text-align: center !important;
+    width: 90px !important; 
+}
+
+.skill-item img.net  {
+    width: 50px !important; 
+    height: 50px !important;
+    object-fit: contain !important;
+    margin-bottom: 8px !important;
+    display: block !important;
+}
+
+.skill-item img.prog  {
+    width: 50px !important; 
+    height: 50px !important;
+    object-fit: contain !important;
+    margin-bottom: 8px !important;
+    display: block !important;
+}
+
+.skill-item h4 {
+    font-size: 12px !important;
+    margin: 0 !important;
+    color: #000 !important;
+    word-break: break-word;
+}
+
+/* ========================================================= */
 
 .cursor {
     position: relative;
     width: 24em;
     margin: 0 auto;
-    border-right: 2px solid rgba(0, 0, 0, 0.75); /* Curseur noir pour être visible sur fond blanc */
+    border-right: 2px solid rgba(0, 0, 0, 0.75);
     font-size: 30px;
     text-align: center;
     white-space: nowrap;
     overflow: hidden;
-    /* Suppression de transform: translateY(-50%); qui faisait remonter le titre sur le header */
 }
 
 .typewriter-animation {
@@ -248,73 +311,8 @@ main h1 {
 
 .header-container {
     display: flex;
-    justify-content: flex-start; /* Aligne le contenu tout à gauche */
-    align-items: center;        /* Centre verticalement si besoin */
+    justify-content: flex-start;
+    align-items: center;
     width: 100%;
-  }
-
-  @media screen and max-width: 768px {
-
-    /* --- 1. Titre Principal (H1) --- */
-    /* Ton H1 était réglé à 80px et en position absolue, ce qui le fait dépasser sur mobile */
-    h1 {
-        font-size: 32px !important;
-        position: static !important;
-        text-align: center !important;
-        margin-top: 20px !important;
-        margin-left: auto !important;
-        margin-right: auto !important;
-    }
-
-    .cursor {
-        width: 100% !important;
-        font-size: 20px !important;
-    }
-
-    /* --- 2. Menu de Navigation --- */
-    nav {
-        border-radius: 20px; /* Moins arrondi pour prendre moins de place */
-        padding: 8px;
-    }
-
-    nav ul {
-        justify-content: center; /* Centre les éléments */
-        gap: 8px; /* Réduit l'espace entre les liens */
-    }
-
-    nav a {
-        font-size: 11px; /* Texte plus petit pour que tout rentre */
-        padding: 6px 8px;
-    }
-
-    .lk, .git {
-        width: 20px !important;
-        height: 20px !important;
-    }
-
-    /* La bulle s'adapte aussi sur mobile */
-    .nav-blob {
-        border-radius: 20px;
-    }
-
-    /* --- 3. Sections & Textes --- */
-    h2 {
-        font-size: 1.5rem;
-        margin-bottom: 20px;
-    }
-
-    .slides1, .slides2, .slides3 {
-        padding: 20px 10px;
-    }
-
-    .ParcoursScolaire, .ParcoursPro, .Competences {
-        gap: 15px; /* Moins d'espace vertical entre les cartes */
-    }
-
-    article {
-        width: 100%; /* Les cartes prennent toute la largeur disponible */
-        margin-bottom: 10px;
-    }
 }
 
- 
