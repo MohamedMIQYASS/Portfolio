@@ -249,7 +249,7 @@ article.CYBER {
     width: 90px !important; 
 }
 
-.skill-item img.net  {
+.skill-item img,  .net2, .prog2 , .cyber2 {
     width: 50px !important; 
     height: 50px !important;
     object-fit: contain !important;
@@ -257,9 +257,9 @@ article.CYBER {
     display: block !important;
 }
 
-.skill-item img.prog  {
-    width: 50px !important; 
-    height: 50px !important;
+.skill-item img,  .net, .prog , .cyber {
+    width: 70px !important; 
+    height: 70px !important;
     object-fit: contain !important;
     margin-bottom: 8px !important;
     display: block !important;
