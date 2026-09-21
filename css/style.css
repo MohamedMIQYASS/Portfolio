@@ -455,3 +455,19 @@ footer > p {
   color: white;
   text-align: center;
 }
+
+footer > .outro {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  justify-content: center;  
+}
+
+footer > .outro > p {
+  color: white;
+}
+
+.outro > img {
+   width: 70px;
+  height: 70px;
+}
