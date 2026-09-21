@@ -471,3 +471,14 @@ footer > .outro > p {
    width: 70px;
   height: 70px;
 }
+
+footer > .depot-git {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  justify-content: center; 
+}
+
+footer > .depot-git > p {
+  color: white;
+}
