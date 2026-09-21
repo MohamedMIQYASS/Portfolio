@@ -39,6 +39,11 @@ h2 {
   margin-bottom: 40px;
 }
 
+.presentation > h2 {
+  margin-left: 0;
+  margin-right: auto;
+}
+
 main {
   background-color: white;
 }
@@ -48,7 +53,7 @@ main h1 {
 }
 
 section {
-  padding: 60px 20px;
+  padding: 80px 20px;
   border-bottom: 1px solid #eee;
 }
 
