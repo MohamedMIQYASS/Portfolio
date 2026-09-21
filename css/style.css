@@ -3,6 +3,13 @@ html {
   scroll-padding-top: 100px;
 }
 
+@font-face {
+  font-family: "Montserrat";
+  src: url("fonts/MaPolice.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -16,7 +23,7 @@ body {
 }
 
 h1, h2, h3, h4, p, nav ul {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: ;
 }
 
 h1 {
