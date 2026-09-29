@@ -161,6 +161,49 @@ nav h1 {
   width: auto;
 }
 
+.terminal_header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  color: #d1d5db;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.buttons span {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  display: block;
+}
+
+.btn-red {
+  background: #ff5f56;
+}
+
+.btn-yellow {
+  background: #ffbd2e;
+}
+
+.btn-green {
+  background: #27c93f;
+}
+
+.terminal-title {
+  color: #d1d5db;
+}
+
+
+
 .user {
   color: #58a6ff;
   font-weight: bold;
