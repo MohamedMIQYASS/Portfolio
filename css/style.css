@@ -1,14 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700&display=swap');
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 100px;
 }
 
-@font-face {
-  font-family: "Bebas Neue";
-  src: url("../font/bebas_neue/BebasNeue-Regular.otf") format("otf");
-  font-weight: 400;
-  font-style: normal;
-}
 * {
   margin: 0;
   padding: 0;
@@ -16,113 +12,72 @@ html {
 }
 
 body {
-  background-color: black;
-  margin: 0;
-  padding: 0;
+  background-color: #000;
   font-family: "Montserrat", sans-serif;
+  color: #111;
 }
 
 h1, h2, h3, h4, p, nav ul {
   font-family: "Montserrat", sans-serif;
 }
 
-h1 {
-  font-size: 80px;
-  text-align: left;
-  margin-left: 0;
-  padding-left: 0;
-  position: absolute;
-  left: 0;
-  top: 0;
-}
-
 h2, h3, h4, p {
-  color: black;
+  color: #111;
 }
 
 h2 {
   text-align: center;
-  font-size: 2rem;
+  font-size: 2.4rem;
   margin-bottom: 40px;
 }
 
-.presentation > h2 {
-  margin-left: 0;
-  margin-right: auto;
-  font-family: "Bebas Neue", sans-serif;
-}
-
 main {
-  background-color: white;
-}
-
-main h1 {
-  margin-top: 50px; 
+  background-color: #fff;
 }
 
 section {
-  padding: 80px 20px;
+  padding: 40px 20px 60px;
   border-bottom: 1px solid #eee;
 }
 
 header {
-  background-color: black;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  background-color: #000;
   position: sticky;
   top: 0;
   z-index: 1000;
-  padding: 10px 20px;
-  min-height: 80px;
-  width: 100%;
-}
-
-.header-container {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
   width: 100%;
 }
 
 nav {
   display: flex;
-  justify-content: flex-start;
+  align-items: center;
   background-color: #1a1a1a;
-  padding: 10px 20px;
+  padding: 8px 16px;
   position: relative;
   overflow: hidden;
-  width: 100%;            
-  max-width: 100%;         
-  margin: 0;               
-  border-radius: 0;
+  width: 100%;
 }
 
 nav ul {
   display: flex;
-  justify-content: flex-start;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 15px;
+  gap: 4px 8px;
   list-style: none;
-  color: #ffffff;
-  margin: 0;
-  padding: 0;
+  color: #fff;
+  width: 100%;
   z-index: 2;
 }
 
 nav a {
   text-decoration: none;
-  color: white;
-  font-weight: bold;
-  font-size: 14px;
-  padding: 10px 15px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 13px;
+  padding: 8px 12px;
   display: block;
-  transition: color 0.3s ease;
   position: relative;
-}
-
-nav a:hover {
-  color: #ffffff;
+  transition: color 0.3s ease;
 }
 
 nav li a img {
@@ -132,6 +87,17 @@ nav li a img {
 
 nav li a:hover img {
   transform: scale(1.1);
+}
+
+nav h1 {
+  position: static;
+  left: auto;
+  top: auto;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #fff;
+  margin: 0;
+  text-align: left;
 }
 
 .nav-blob {
@@ -148,19 +114,36 @@ nav li a:hover img {
   pointer-events: none;
 }
 
-nav a.active ~ .nav-blob {
-  opacity: 1;
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.slides1 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  min-height: 70vh;
+  padding: 60px 20px;
+}
+
+.slides1 h2 {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(4rem, 10vw, 8rem);
+  line-height: 0.9;
+  text-align: left;
+  margin: 0;
+  color: #111;
 }
 
 .slides1 p {
-  width: 50%;
-  margin-left: 15px;
-  font-size: 25px;
-}
-
-.slides2 article, 
-.slides3 article {
-  background-color: #F0EDED;
+  width: min(100%, 520px);
+  margin: 0;
+  font-size: 1.15rem;
+  line-height: 1.7;
 }
 
 .section-header {
@@ -169,29 +152,27 @@ nav a.active ~ .nav-blob {
   gap: 10px;
   flex-basis: 100%;
   justify-content: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin: 20px 0;
 }
 
 .section-header h3 {
   margin: 0;
 }
 
-.ParcoursScolaire, 
-.ParcoursPro {
+.ParcoursScolaire,
+.ParcoursPro,
+.projets {
   display: flex;
   justify-content: center;
   gap: 30px;
   flex-wrap: wrap;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 .Competences {
   display: flex;
-  align-items: center;
-  min-height: 200px;
+  flex-direction: column;
   gap: 30px;
-  flex-wrap: wrap;
   margin-bottom: 30px;
 }
 
@@ -201,12 +182,20 @@ article {
   padding: 20px;
   background-color: #fafafa;
   transition: transform 0.2s, box-shadow 0.2s;
+  text-align: center;
+  width: 280px;
 }
 
-article:hover, 
+.slides2 article,
+.slides3 article,
+.slides4 article {
+  background-color: #f0eded;
+}
+
+article:hover,
 .skill-item:hover {
   transform: translateY(-5px);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 article img {
@@ -215,140 +204,164 @@ article img {
   object-fit: contain;
 }
 
-article.RESEAU, 
-article.DEV, 
+article.RESEAU,
+article.DEV,
 article.CYBER {
-  display: flex !important;
-  flex-direction: row !important; 
-  flex-wrap: wrap !important; 
-  justify-content: center !important;
-  align-items: flex-start !important;
-  gap: 20px !important; 
-  width: auto !important;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+  width: 100%;
   max-width: 100%;
 }
 
 .skill-item {
-  display: flex !important;
-  flex-direction: column !important; 
-  align-items: center !important; 
-  text-align: center !important;
-  width: 90px !important; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 140px;
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.skill-item img, 
-.net2, .prog2, .cyber2 {
-  width: 50px !important; 
-  height: 50px !important;
-  object-fit: contain !important;
-  margin-bottom: 8px !important;
-  display: block !important;
+.skill-item img,
+.net2,
+.prog2,
+.cyber2 {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  margin-bottom: 8px;
+  display: block;
 }
 
-.net, .prog, .cyber {
-  width: 70px !important; 
-  height: 70px !important;
-  object-fit: contain !important;
-  margin-bottom: 8px !important;
-  display: block !important;
+.net,
+.prog,
+.cyber {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  margin-bottom: 8px;
+  display: block;
 }
 
 .skill-item h4 {
-  font-size: 12px !important;
-  margin: 0 !important;
-  color: #000 !important;
+  font-size: 12px;
+  margin: 0;
+  color: #000;
   word-break: break-word;
 }
 
-.info, .book, .work {
-  width: 20px !important;
-  height: 20px !important;
+.info,
+.book,
+.work {
+  width: 20px;
+  height: 20px;
 }
 
 .lk {
-  width: 35px !important;  
-  height: 35px !important;
+  width: 35px;
+  height: 35px;
   object-fit: contain;
 }
 
 .git {
-  width: 30px !important;
-  height: 30px !important;
+  width: 30px;
+  height: 30px;
   object-fit: contain;
 }
 
 .cursor {
-  position: relative;
-  width: 24em;
-  margin: 0 auto;
-  border-right: 2px solid rgba(0, 0, 0, 0.75);
-  font-size: 30px;
-  text-align: center;
+  display: inline-block;
+  max-width: 26ch;
+  border-right: 2px solid rgba(255, 255, 255, 0.75);
+  font-size: 0.95rem;
   white-space: nowrap;
   overflow: hidden;
+  vertical-align: middle;
 }
 
 .typewriter-animation {
-  animation: 
-    typewriter 2s steps(150) 1s 1 normal both, 
+  animation:
+    typewriter 2s steps(32) 0.4s 1 normal both,
     blinkingCursor 500ms steps(50) infinite normal;
 }
 
 @keyframes typewriter {
   from { width: 0; }
-  to { width: 100%; }
+  to { width: 26ch; }
 }
 
 @keyframes blinkingCursor {
-  from { border-right-color: rgba(0, 0, 0, 0.75); }
+  from { border-right-color: rgba(255, 255, 255, 0.75); }
   to { border-right-color: transparent; }
 }
 
-#container {
-  border: solid 3px #474544;
-  max-width: 768px;
-  margin: 60px auto;
-  position: relative;
-}
-
-form {
-  padding: 37.5px;
-  margin: 50px 0;
-}
-
 footer {
-  background-color: black;
+  background-color: #000;
+  padding: 30px 16px 20px;
 }
 
-footer > p {
-  color: white;
+footer p {
+  color: #fff;
   text-align: center;
 }
 
-footer > .outro {
+footer .outro {
   display: flex;
   align-items: center;
-  gap: 20px;
-  justify-content: center;  
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
 }
 
-footer > .outro > p {
-  color: white;
+footer .outro p {
+  color: #fff;
 }
 
-.outro > img {
-   width: 70px;
+.outro img {
+  width: 70px;
   height: 70px;
+  object-fit: contain;
 }
 
-footer > .depot-git {
+footer .depot-git {
   display: flex;
   align-items: center;
-  gap: 20px;
-  justify-content: center; 
+  gap: 12px;
+  justify-content: center;
+  list-style: none;
+  margin-bottom: 16px;
 }
 
-footer > .depot-git > p {
-  color: white;
+footer .depot-git p {
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  nav h1,
+  .cursor {
+    display: none;
+  }
+
+  .slides1 {
+    min-height: auto;
+    padding: 40px 12px;
+  }
+
+  .slides1 h2 {
+    font-size: 3.5rem;
+  }
+
+  .slides1 p {
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  article {
+    width: 100%;
+  }
 }
