@@ -139,14 +139,38 @@ nav h1 {
   color: #111;
 }
 
-
-
-.slides1 p {
-  width: min(100%, 520px);
-  margin: 0;
-  font-size: 1.15rem;
-  line-height: 1.7;
+.terminal {
+  flex: 1 1 320px;
+  width: 100%;
+  max-width: 640px;
+  min-width: 0;
+  background: #0d1117;
+  color: #39ff14;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 0 25px rgba(57, 255, 20, 0.15);
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 0.95rem;
+  line-height: 1.6;
 }
+
+.terminal p {
+  margin: 8px 0;
+  white-space: pre-wrap;
+  color: inherit;
+  width: auto;
+}
+
+.user {
+  color: #58a6ff;
+  font-weight: bold;
+}
+
+.path {
+  color: #f1e05a;
+}
+
+
 
 .section-header {
   display: flex;
@@ -358,9 +382,10 @@ footer .depot-git p {
     font-size: 3.5rem;
   }
 
-  .slides1 p {
-    width: 100%;
-    font-size: 1rem;
+  .terminal {
+    max-width: 100%;
+    font-size: 0.85rem;
+    padding: 18px;
   }
 
   article {
