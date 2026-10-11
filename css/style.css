@@ -532,3 +532,15 @@ footer .depot-git p {
     scroll-padding-top: 70px;
   }
 }
+
+@media (max-width: 768px){
+  .skill-item{
+    width: calc(50% - 10px);
+  }
+
+  article.RESEAU,
+  article.CYBER {
+    padding: 14px;
+    gap: 14px;
+  }
+}
