@@ -159,7 +159,9 @@
                                 <img src="img/ACK_Part_Nutanix.png" class="nutanix" alt="Nutanix">
                                 <h4>Mise en place d'une infrastructure réseaux virtuelle grâce à Nutanix</h4>
                                 <p>1ère année de BTS SIO - Atelier de professionnalisation</p>
-                                <img src="img/info.png" class="info" alt="Infos">
+                                <button type="button" class="btn" onclick="openPopup()" aria-label="Afficher les informations">
+                                    <img src="img/info.png" alt="" width="20" height="20">
+                                </button>
                             </article>
                             <article class="projet-wordpress">
                                 <img src="img/wordpress.png" class="wordpress" alt="WordPress">
@@ -203,6 +205,23 @@
                 </ul>
             </nav>
             <button type="button" onclick="closePopup()">OK</button>
+        </div>
+        </div>
+        <div class="popup-overlay2" id="popup-overlay2" onclick="closePopup2()"></div>
+        <div class="popup2" id="popup2" role="dialog" aria-modal="true" aria-labelledby="popup2-title">
+            <h3 id="popup2-title">Services proposées</h3>
+            <nav>
+                <ul>
+                    <li><a>DNS/DHCP</a></li>
+                    <li><a>Annuaire Active Directory</a></li>
+                    <li><a>Protection IDS/IPS</a></li>
+                    <li><a>NTP</a></li>
+                    <li><a>Serveur web - apache2</a></li>
+                    <li><a>FTP</a></li>
+                </ul>
+            </nav>
+            <button type="button" onclick="closePopup2()">OK</button>
+        </div>
         </div>
         <footer>
             <div class="outro">

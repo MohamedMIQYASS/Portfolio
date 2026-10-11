@@ -90,9 +90,19 @@ function openPopup() {
     document.getElementById("popup-overlay").classList.add("open-popup");
 }
 
+function openPopup2() {
+    document.getElementById("popup2").classList.add("open-popup2");
+    document.getElementById("popup-overlay2").classList.add("open-popup2");
+}
+
 function closePopup() {
     document.getElementById("popup").classList.remove("open-popup");
     document.getElementById("popup-overlay").classList.remove("open-popup");
+}
+
+function closePopup2() {
+    document.getElementById("popup2").classList.remove("open-popup2");
+    document.getElementById("popup-overlay2").classList.remove("open-popup2");
 }
 
 document.addEventListener("keydown", e => {
