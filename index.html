@@ -13,7 +13,7 @@
                 <ul id="menu">
                     <li><a href="#presentation">ACCUEIL</a></li>
                     <li><a href="#parcours">PARCOURS</a></li>
-                    <li><a href="#competences">COMPETENCES</a></li>
+                    <li><a href="#competences">COMPÉTENCES</a></li>
                     <li><a href="#projets">PROJETS</a></li>
                     <li><a href="#veille">VEILLE</a></li>
                     <li><a href="#contact">CONTACT</a></li>
@@ -159,9 +159,6 @@
                                 <img src="img/ACK_Part_Nutanix.png" class="nutanix" alt="Nutanix">
                                 <h4>Mise en place d'une infrastructure réseaux virtuelle grâce à Nutanix</h4>
                                 <p>1ère année de BTS SIO - Atelier de professionnalisation</p>
-                                <button type="button" class="btn" onclick="openPopup()" aria-label="Afficher les informations">
-                                    <img src="img/info.png" alt="" width="20" height="20">
-                                </button>
                             </article>
                             <article class="projet-wordpress">
                                 <img src="img/wordpress.png" class="wordpress" alt="WordPress">
@@ -174,7 +171,9 @@
                                 <img src="img/network.png" class="reseaux2" alt="Réseau">
                                 <h4>Mise en place d'une infrastructure réseaux physique</h4>
                                 <p>2ème année de BTS SIO - Atelier de professionnalisation</p>
-                                <img src="img/info.png" class="info" alt="Infos">
+                                <button type="button" class="btn" onclick="openPopup2()" aria-label="Afficher les services proposés">
+                                    <img src="img/info.png" alt="" width="20" height="20">
+                                </button>
                             </article>
                         </div>
                     </section>
@@ -192,36 +191,30 @@
             </div>
         </main>
         <div class="popup-overlay" id="popup-overlay" onclick="closePopup()"></div>
-        <div class="popup" id="popup" role="dialog" aria-modal="true" aria-labelledby="popup-title">
+        <div class="popup" id="popup" role="dialog" aria-modal="true" aria-labelledby="popup-title" aria-hidden="true">
             <h3 id="popup-title">Activités réalisées</h3>
-            <nav>
-                <ul>
-                    <li><a>Configuration de téléphone pour les employés / techniciens</a></li>
-                    <li><a>Changement de composants sur des ordinateurs</a></li>
-                    <li><a>Etablissement d’un pont wifi entre plusieurs batiments</a></li>
-                    <li><a>Elaboration d’inventaire des appareils connectés d’un site</a></li>
-                    <li><a>Changement de domaine Windows sur certains ordinateurs</a></li>
-                    <li><a>Gestion de dysfonctionnement sur certains appareils</a></li>
-                </ul>
-            </nav>
+            <ul class="popup-list">
+                <li>Configuration de téléphones pour les employés / techniciens</li>
+                <li>Changement de composants sur des ordinateurs</li>
+                <li>Établissement d’un pont wifi entre plusieurs bâtiments</li>
+                <li>Élaboration d’un inventaire des appareils connectés d’un site</li>
+                <li>Changement de domaine Windows sur certains ordinateurs</li>
+                <li>Gestion de dysfonctionnements sur certains appareils</li>
+            </ul>
             <button type="button" onclick="closePopup()">OK</button>
         </div>
-        </div>
-        <div class="popup-overlay2" id="popup-overlay2" onclick="closePopup2()"></div>
-        <div class="popup2" id="popup2" role="dialog" aria-modal="true" aria-labelledby="popup2-title">
-            <h3 id="popup2-title">Services proposées</h3>
-            <nav>
-                <ul>
-                    <li><a>DNS/DHCP</a></li>
-                    <li><a>Annuaire Active Directory</a></li>
-                    <li><a>Protection IDS/IPS</a></li>
-                    <li><a>NTP</a></li>
-                    <li><a>Serveur web - apache2</a></li>
-                    <li><a>FTP</a></li>
-                </ul>
-            </nav>
+        <div class="popup-overlay" id="popup-overlay2" onclick="closePopup2()"></div>
+        <div class="popup" id="popup2" role="dialog" aria-modal="true" aria-labelledby="popup2-title" aria-hidden="true">
+            <h3 id="popup2-title">Services proposés</h3>
+            <ul class="popup-list">
+                <li>DNS/DHCP</li>
+                <li>Annuaire Active Directory</li>
+                <li>Protection IDS/IPS</li>
+                <li>NTP</li>
+                <li>Serveur web - apache2</li>
+                <li>FTP</li>
+            </ul>
             <button type="button" onclick="closePopup2()">OK</button>
-        </div>
         </div>
         <footer>
             <div class="outro">
