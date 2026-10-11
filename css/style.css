@@ -503,3 +503,32 @@ footer .depot-git p {
   padding: 4px 10px;
   cursor: pointer;
 }
+
+@media (max-width:768px){
+  nav {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  .burger{
+    display: block;
+  }
+  nav ul{
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+  nav ul.open {
+    display: flex;
+  }
+  nav a {
+    padding: 14px 12px;
+    font-size: 15px;
+  }
+  .nav-blob{
+    display: none;
+  }
+  html {
+    scroll-padding-top: 70px;
+  }
+}
