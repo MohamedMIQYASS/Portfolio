@@ -492,3 +492,14 @@ footer .depot-git p {
     width: 100%;
   }
 }
+
+.burger {
+  display: none;
+  background:none;
+  border: 0;
+  color: #fff;
+  font-size: 28px;
+  line-height: 1;
+  padding: 4px 10px;
+  cursor: pointer;
+}
