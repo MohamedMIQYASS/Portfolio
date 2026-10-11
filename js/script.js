@@ -4,6 +4,20 @@ document.addEventListener("DOMContentLoaded", function() {
     const navUl = nav.querySelector('ul');
     const navLinks = navUl.querySelectorAll('a');
     const blob = nav.querySelector('.nav-blob');
+    const burger = nav.querySelector('.burger');
+
+    burger.addEventListener('click', () => {
+        const open = navUl.classList.toggle('open');
+        burger.setAttribute('aria-expanded', open);
+    });
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            navUl.classList.remove('open');
+            burger.setAttribute('aria-expanded', 'false');
+        });
+    });
+
 
     // Fonction pour déplacer le blob sur un élément spécifique
     function moveBlob(element) {
@@ -16,11 +30,12 @@ document.addEventListener("DOMContentLoaded", function() {
         const parentLi = element.closest('li');
         const leftPosition = parentLi.offsetLeft;
         const elementWidth = parentLi.offsetWidth;
+        
+        if (window.innerWidth <= 768) return;   // <-- à ajouter
+            blob.style.left = `${leftPosition}px`;
+            blob.style.width = `${elementWidth}px`;
+            blob.style.opacity = '1'; // Rendre le blob visible
 
-        // Appliquer les nouvelles dimensions et position au blob
-        blob.style.left = `${leftPosition}px`;
-        blob.style.width = `${elementWidth}px`;
-        blob.style.opacity = '1'; // Rendre le blob visible
     }
 
     // Fonction pour réinitialiser le blob sur l'élément actif
