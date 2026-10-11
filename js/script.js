@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const nav = document.querySelector('nav');
     const navUl = nav.querySelector('ul');
     const allLinks = navUl.querySelectorAll('a');
-    const sectionLinks = navUl.querySelectorAll('a[href^="#"]'); 
+    const sectionLinks = navUl.querySelectorAll('a[href^="#"]');
     const blob = nav.querySelector('.nav-blob');
     const burger = nav.querySelector('.burger');
 
@@ -12,14 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
         navUl.classList.remove('open');
         burger.setAttribute('aria-expanded', 'false');
     }
-
-    burger.addEventListener('click', () => {
-        const open = navUl.classList.toggle('open');
-        burger.setAttribute('aria-expanded', String(open));
-    });
-
-    allLinks.forEach(link => link.addEventListener('click', closeMenu));
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
 
     function moveBlob(link) {
         if (isMobile()) return;
@@ -46,6 +38,15 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!navUl.matches(':hover')) resetBlobToActive();
     }
 
+    // Menu burger
+    burger.addEventListener('click', () => {
+        const open = navUl.classList.toggle('open');
+        burger.setAttribute('aria-expanded', String(open));
+    });
+    allLinks.forEach(link => link.addEventListener('click', closeMenu));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+
+    // Bulle de survol
     allLinks.forEach(link => {
         link.addEventListener('mouseenter', () => moveBlob(link));
         link.addEventListener('focus', () => moveBlob(link));
@@ -53,6 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
     navUl.addEventListener('mouseleave', resetBlobToActive);
     navUl.addEventListener('focusout', resetBlobToActive);
 
+    // Lien actif selon la section visible
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -68,16 +70,17 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     if (sectionLinks.length) setActive(sectionLinks[0]);
-    document.fonts.ready.then(resetBlobToActive); 
-    window.addEventListener('resize', resetBlobToActive);
-});
+    document.fonts.ready.then(resetBlobToActive);
 
-window.addEventListener('scroll', () => {
-    const bottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
-    if (bottom) setActive(sectionLinks[sectionLinks.length - 1]);
-}, { passive: true });
+    // Bas de page : activer le dernier lien (la section Contact est trop courte pour être détectée)
+    window.addEventListener('scroll', () => {
+        const bottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+        if (bottom && sectionLinks.length) setActive(sectionLinks[sectionLinks.length - 1]);
+    }, { passive: true });
 
-window.addEventListener('resize', () => {
-    if (!isMobile()) closeMenu();
-    resetBlobToActive();
+    // Un seul écouteur resize
+    window.addEventListener('resize', () => {
+        if (!isMobile()) closeMenu();
+        resetBlobToActive();
+    });
 });
