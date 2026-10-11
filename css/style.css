@@ -584,13 +584,33 @@ footer .depot-git p {
   opacity: 1;
 }
 
-.popup h2 {
-  margin: 30px 0 0;
+.popup h3 {
+  margin: 30px 0 16px;
 }
 
-.popup button button {
+.popup-list {
+  list-style: none;
+  text-align: left;
+  color: #333;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.popup-list li {
+  padding: 6px 0 6px 18px;
+  position: relative;
+}
+
+.popup-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #0072ff;
+}
+
+.popup button {
   width: 100%;
-  margin-top: 50px;
+  margin-top: 24px;
   padding: 10px 0;
   color: #fff;
   background: #0072ff;
