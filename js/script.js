@@ -85,26 +85,22 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-function openPopup() {
-    document.getElementById("popup").classList.add("open-popup");
-    document.getElementById("popup-overlay").classList.add("open-popup");
+function togglePopup(popupId, overlayId, show) {
+    const popup = document.getElementById(popupId);
+    const overlay = document.getElementById(overlayId);
+    popup.classList.toggle("open-popup", show);
+    overlay.classList.toggle("open-popup", show);
+    popup.setAttribute("aria-hidden", String(!show));
 }
 
-function openPopup2() {
-    document.getElementById("popup2").classList.add("open-popup2");
-    document.getElementById("popup-overlay2").classList.add("open-popup2");
-}
-
-function closePopup() {
-    document.getElementById("popup").classList.remove("open-popup");
-    document.getElementById("popup-overlay").classList.remove("open-popup");
-}
-
-function closePopup2() {
-    document.getElementById("popup2").classList.remove("open-popup2");
-    document.getElementById("popup-overlay2").classList.remove("open-popup2");
-}
+function openPopup()   { togglePopup("popup",  "popup-overlay",  true);  }
+function openPopup2()  { togglePopup("popup2", "popup-overlay2", true);  }
+function closePopup()  { togglePopup("popup",  "popup-overlay",  false); }
+function closePopup2() { togglePopup("popup2", "popup-overlay2", false); }
 
 document.addEventListener("keydown", e => {
-    if (e.key === "Escape") closePopup();
+    if (e.key === "Escape") {
+        closePopup();
+        closePopup2();
+    }
 });
