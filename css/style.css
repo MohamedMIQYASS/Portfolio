@@ -236,8 +236,21 @@ nav h1 {
 .slides2,
 .slides3,
 .slides4,
-.slides5 {
+.slides5,
+.slides6 {
   padding: 20px 0 40px;
+}
+
+.contact ul {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  list-style: none;
+  margin-top: 20px;
+}
+
+.contact p {
+  text-align: center;
 }
 
 .ParcoursScolaire,
