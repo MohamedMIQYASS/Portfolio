@@ -84,3 +84,17 @@ document.addEventListener("DOMContentLoaded", () => {
         resetBlobToActive();
     });
 });
+
+function openPopup() {
+    document.getElementById("popup").classList.add("open-popup");
+    document.getElementById("popup-overlay").classList.add("open-popup");
+}
+
+function closePopup() {
+    document.getElementById("popup").classList.remove("open-popup");
+    document.getElementById("popup-overlay").classList.remove("open-popup");
+}
+
+document.addEventListener("keydown", e => {
+    if (e.key === "Escape") closePopup();
+});

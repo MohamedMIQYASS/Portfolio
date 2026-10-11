@@ -80,7 +80,7 @@
                             <h4>Stage de première année de BTS SIO</h4>
                             <p>18 mai - 3 juillet 2026</p>
                             <p>Kleber Malecot - Neuville-aux-Bois</p>
-                            <img src="img/info.png" class="info" alt="Infos">
+                            <button type="button" class="btn" onclick="openPopup()">A</button>
                         </article>
                     </section>
                 </div>
@@ -171,7 +171,7 @@
                         </div>
                         <div class="deuxiemeannee">
                             <article class="E5">
-                                <img src="img/network.png" class="reseaux2">
+                                <img src="img/network.png" class="reseaux2" alt="Réseau">
                                 <h4>Mise en place d'une infrastructure réseaux physique</h4>
                                 <p>2ème année de BTS SIO - Atelier de professionnalisation</p>
                                 <img src="img/info.png" class="info" alt="Infos">
@@ -191,6 +191,11 @@
                 </div>
             </div>
         </main>
+        <div class="popup-overlay" id="popup-overlay" onclick="closePopup()"></div>
+        <div class="popup" id="popup" role="dialog" aria-modal="true" aria-labelledby="popup-title">
+            <h2 id="popup-title">Contenu</h2>
+            <button type="button" onclick="closePopup()">OK</button>
+        </div>
         <footer>
             <div class="outro">
                 <p>Portfolio créé par Mohamed MIQYASS en HTML/CSS</p>
