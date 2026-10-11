@@ -25,7 +25,9 @@ document.addEventListener("DOMContentLoaded", () => {
         if (isMobile()) return;
         const li = link.closest('li');
         blob.style.left = `${li.offsetLeft}px`;
+        blob.style.top = `${li.offsetTop}px`;
         blob.style.width = `${li.offsetWidth}px`;
+        blob.style.height = `${li.offsetHeight}px`;
         blob.style.opacity = '1';
     }
 
@@ -68,4 +70,14 @@ document.addEventListener("DOMContentLoaded", () => {
     if (sectionLinks.length) setActive(sectionLinks[0]);
     document.fonts.ready.then(resetBlobToActive); 
     window.addEventListener('resize', resetBlobToActive);
+});
+
+window.addEventListener('scroll', () => {
+    const bottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+    if (bottom) setActive(sectionLinks[sectionLinks.length - 1]);
+}, { passive: true });
+
+window.addEventListener('resize', () => {
+    if (!isMobile()) closeMenu();
+    resetBlobToActive();
 });
