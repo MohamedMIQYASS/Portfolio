@@ -1,82 +1,71 @@
-// Attendre que le DOM soit chargé
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", () => {
     const nav = document.querySelector('nav');
     const navUl = nav.querySelector('ul');
-    const navLinks = navUl.querySelectorAll('a');
+    const allLinks = navUl.querySelectorAll('a');
+    const sectionLinks = navUl.querySelectorAll('a[href^="#"]'); 
     const blob = nav.querySelector('.nav-blob');
     const burger = nav.querySelector('.burger');
 
-    burger.addEventListener('click', () => {
-        const open = navUl.classList.toggle('open');
-        burger.setAttribute('aria-expanded', open);
-    });
+    const isMobile = () => window.innerWidth <= 768;
 
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            navUl.classList.remove('open');
-            burger.setAttribute('aria-expanded', 'false');
-        });
-    });
-
-
-    // Fonction pour déplacer le blob sur un élément spécifique
-    function moveBlob(element) {
-        // Obtenir les coordonnées de l'élément par rapport à son parent (navUl)
-        const rect = element.getBoundingClientRect();
-        const navRect = navUl.getBoundingClientRect();
-
-        // Calculer la position 'left' relative
-        // Nous utilisons offsetLeft de l'élément parent <li> pour plus de précision sur la zone
-        const parentLi = element.closest('li');
-        const leftPosition = parentLi.offsetLeft;
-        const elementWidth = parentLi.offsetWidth;
-        
-        if (window.innerWidth <= 768) return;   // <-- à ajouter
-            blob.style.left = `${leftPosition}px`;
-            blob.style.width = `${elementWidth}px`;
-            blob.style.opacity = '1'; // Rendre le blob visible
-
+    function closeMenu() {
+        navUl.classList.remove('open');
+        burger.setAttribute('aria-expanded', 'false');
     }
 
-    // Fonction pour réinitialiser le blob sur l'élément actif
+    burger.addEventListener('click', () => {
+        const open = navUl.classList.toggle('open');
+        burger.setAttribute('aria-expanded', String(open));
+    });
+
+    allLinks.forEach(link => link.addEventListener('click', closeMenu));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+
+    function moveBlob(link) {
+        if (isMobile()) return;
+        const li = link.closest('li');
+        blob.style.left = `${li.offsetLeft}px`;
+        blob.style.width = `${li.offsetWidth}px`;
+        blob.style.opacity = '1';
+    }
+
     function resetBlobToActive() {
-        const activeLink = navUl.querySelector('a.active');
-        if (activeLink) {
-            moveBlob(activeLink);
+        const active = navUl.querySelector('a.active');
+        if (active) {
+            moveBlob(active);
         } else {
-            blob.style.opacity = '0'; // Cacher si aucun n'est actif
+            blob.style.opacity = '0';
             blob.style.width = '0';
         }
     }
 
-    // 1. Initialisation : Définir le premier lien comme actif et y placer le blob
-    if (navLinks.length > 0) {
-        navLinks[0].classList.add('active'); // Rend 'ACCUEIL' actif par défaut
-        moveBlob(navLinks[0]); // Place le blob dessus immédiatement
+    function setActive(link) {
+        sectionLinks.forEach(l => l.classList.toggle('active', l === link));
+        if (!navUl.matches(':hover')) resetBlobToActive();
     }
 
-    // 2. Gestionnaires d'événements pour le survol (hover)
-    navLinks.forEach(link => {
-        link.addEventListener('mouseenter', function() {
-            moveBlob(this);
+    allLinks.forEach(link => {
+        link.addEventListener('mouseenter', () => moveBlob(link));
+        link.addEventListener('focus', () => moveBlob(link));
+    });
+    navUl.addEventListener('mouseleave', resetBlobToActive);
+    navUl.addEventListener('focusout', resetBlobToActive);
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const link = navUl.querySelector(`a[href="#${entry.target.id}"]`);
+                if (link) setActive(link);
+            }
         });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+
+    sectionLinks.forEach(link => {
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) observer.observe(target);
     });
 
-    // 3. Gestionnaire d'événement quand la souris quitte la zone de nav
-    navUl.addEventListener('mouseleave', function() {
-        resetBlobToActive();
-    });
-
-    // 4. Gestionnaire d'événement pour le clic (optionnel, pour changer l'élément actif)
-    navLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            // Retirer 'active' de tous les liens
-            navLinks.forEach(l => l.classList.remove('active'));
-            // Ajouter 'active' au lien cliqué
-            this.classList.add('active');
-        });
-    });
-
-    // Recalculer la position du blob si la fenêtre est redimensionnée
+    if (sectionLinks.length) setActive(sectionLinks[0]);
+    document.fonts.ready.then(resetBlobToActive); 
     window.addEventListener('resize', resetBlobToActive);
 });
