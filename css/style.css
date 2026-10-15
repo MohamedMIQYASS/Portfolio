@@ -637,3 +637,85 @@ footer .depot-git p {
   width: 20px;
   height: 20px;
 }
+
+#contact-form {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background:#1e1e2e ;
+  border: 1px solid #333;
+  border-radius: 10px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.2rem;
+}
+
+.form-group label {
+  margin-bottom: 0.4rem;
+  font-weight: bold;
+  color:  #e0e0e0;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 0.8rem;
+  background: #11111b;
+  border: 1px solid #444;
+  border-radius: 6px;
+  color: #fff;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #4ade80;
+  box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.2);
+}
+
+.form-group textarea {
+  resize: vertical;
+}
+
+#contact-form button {
+  width: 100%;
+  padding: 0.9rem;
+  background: #4ade80;
+  color: #11111b;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+#contact-form button:hover {
+  background: #22c55e;
+}
+
+#contact-form button:active {
+  transform: scale(0.98);
+}
+
+#contact-form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+#form-status {
+  margin-top: 1rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+#form-status.success { color: #4ade80; }
+#form-status.error   { color: #f87171; }
+
+
+
