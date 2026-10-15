@@ -104,3 +104,35 @@ document.addEventListener("keydown", e => {
         closePopup2();
     }
 });
+
+const form = document.getElementById("contact-form");
+const status = document.getElementById("form-status");
+const button = form.querySelector("button");
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  button.disabled = true;
+  status.className = "";
+  status.textContent = "Envoi en cours...";
+
+  try {
+    const response = await fetch(form.action, {
+      method: "POST",
+      body: new FormData(form),
+      headers: { Accept: "application/json" }
+    });
+
+    if (response.ok) {
+      status.textContent = "Merci ! Votre message a bien été envoyé.";
+      status.className = "success";
+      form.reset();
+    } else {
+      throw new Error();
+    }
+  } catch {
+    status.textContent = "Une erreur est survenue. Réessayez ou contactez-moi via LinkedIn.";
+    status.className = "error";
+  } finally {
+    button.disabled = false;
+  }
+});
