@@ -844,6 +844,8 @@ footer .depot-git p {
   }
 }
 
+.veille-track::-webkit-scrollbar {display: none;}
+
 
 
 
