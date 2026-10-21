@@ -846,6 +846,76 @@ footer .depot-git p {
 
 .veille-track::-webkit-scrollbar {display: none;}
 
+.veilles-sources {
+  max-width: 1100px;
+  margin: 0 auto 30px;
+  padding: 0 56px;
+  text-align: center;
+}
+
+.veilles-sources-title {
+  font-size: 1.3rem;
+  margin-bottom: 6px;
+}
+
+.veilles-sources-intro {
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.veilles-sources-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.veille-source {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  max-width: 420px;
+  padding: 14px 18px;
+  text-align: left;
+  text-decoration: none;
+  background-color: #f0eded;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.veille-source:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.veille-source img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.veille-source h4 {
+  font-size: 1rem;
+  color: #0072ff;
+  margin-bottom: 4px;
+}
+
+.veille-source p {
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  .veille-sources {
+    padding: 0;
+  }
+}
+
+
+
 
 
 
