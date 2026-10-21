@@ -846,24 +846,24 @@ footer .depot-git p {
 
 .veille-track::-webkit-scrollbar {display: none;}
 
-.veilles-sources {
+.veille-sources {
   max-width: 1100px;
   margin: 0 auto 30px;
   padding: 0 56px;
   text-align: center;
 }
 
-.veilles-sources-title {
+.veille-sources-title {
   font-size: 1.3rem;
   margin-bottom: 6px;
 }
 
-.veilles-sources-intro {
+.veille-sources-intro {
   font-size: 14px;
   margin-bottom: 16px;
 }
 
-.veilles-sources-list {
+.veille-sources-list {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
