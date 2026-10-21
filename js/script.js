@@ -106,7 +106,7 @@ document.addEventListener("keydown", e => {
 });
 
 const form = document.getElementById("contact-form");
-const status = document.getElementById("form-status");
+const formStatus = document.getElementById("form-status");
 const button = form.querySelector("button");
 
 form.addEventListener("submit", async (e) => {
