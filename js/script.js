@@ -136,3 +136,19 @@ form.addEventListener("submit", async (e) => {
     button.disabled = false;
   }
 });
+
+const veilleTrack = document.querySelector('.veille-track');
+
+if (veilleTrack) {
+  const veilleStep = () =>
+    veilleTrack.querySelector('.veille-card').offsetWidth + 24; // largeur + gap
+
+  document.querySelector('.veille-btn.next').addEventListener('click', () => {
+    veilleTrack.scrollBy({ left: veilleStep(), behavior: 'smooth' });
+  });
+
+  document.querySelector('.veille-btn.prev').addEventListener('click', () => {
+    veilleTrack.scrollBy({ left: -veilleStep(), behavior: 'smooth' });
+  });
+}
+
