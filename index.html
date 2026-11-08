@@ -74,6 +74,9 @@
                         </div>
                         <article class="stage-bts">
                             <img src="img/kleber.png" class="logo kleber" alt="Logo Kleber Malecot">
+                            <button type="button" class="btn" onclick="openPopup3()" aria-label="Afficher les informations">
+                                <img src="img/info.png" alt="" width="20" height="20">
+                            </button>
                             <h4>Stage de première année de BTS SIO</h4>
                             <p>18 mai - 3 juillet 2026</p>
                             <p>Kleber Malecot - Neuville-aux-Bois</p>
@@ -226,21 +229,26 @@
                                 <img src="img/Red_Hat-Logo.wine.png" alt="logo de la source">
                                 <span class="veille-tag">Article 1</span>
                                 <h3>Redhat Blog</h3>
-                                <p>Présentation d'Ansible par Redhat , logiciel qui permet d'automatiser la sécurisation de réseaux sur le principe de Zero-Trust</p>
+                                <p>Cet article présente comment la solution Ansible Automation Platform de Red Hat peut contribuer à sécuriser les infrastructures réseau en automatisant l'application des principes du Zero Trust. Cette approche de cybersécurité consiste à ne pas accorder de confiance implicite aux utilisateurs, aux appareils ou aux connexions, et à contrôler les accès selon des règles définies.</p>
                                 <a href="https://www.redhat.com/en/blog/building-zero-trust-networks-red-hat-ansible" target="" rel="noopener">Lire l'article</a>
                             </div>
                             <div class="veille-card">
                                 <img src="img/Medium-Logo.png" alt="logo de la source">
                                 <span class="veille-tag">Article 2</span>
                                 <h3>Medium</h3>
-                                <p>Automatisation d'Ansible avec PostgreSQL</p>
+                                <p>L'article présente l'utilisation d'Ansible, un outil open source permettant d'automatiser l'administration des serveurs informatiques. Il explique comment centraliser la gestion de plusieurs machines Linux afin de simplifier leur configuration et le déploiement de services.
+                                    L'auteur décrit la mise en place d'un serveur de contrôle Ansible qui communique avec les machines distantes grâce au protocole SSH. Les tâches à effectuer sont définies dans des fichiers YAML appelés Playbooks. Ces fichiers permettent notamment d'installer des logiciels, de créer des fichiers de configuration et de déployer des services.
+                                    
+                                </p>
                                 <a href="https://medium.com/@WilsonLeee/ucl-comp0235-data-engineering-week-2-devops-ansible-and-postgresql-4c64e275914f" target="" rel="noopener">Lire l'article</a>
                             </div>
                             <div class="veille-card">
                                 <img src="img/cisco-logo-png_seeklogo-212506.png" alt="logo de la source">
                                 <span class="veille-tag">Article 3</span>
                                 <h3>Cisco Blogs</h3>
-                                <p>Mise en place d'un modèle de routage par IA </p>
+                                <p>Dans cet article, Cisco présente, en collaboration avec NVIDIA, une nouvelle approche appelée AI Inference Routing, qui vise à optimiser l'utilisation des ressources informatiques réparties sur plusieurs sites.
+                                    L'objectif est de permettre aux fournisseurs de services de mieux exploiter leurs serveurs, leurs centres de données et leurs infrastructures réseau pour exécuter des applications d'intelligence artificielle.
+                                    </p>
                                 <a href="https://blogs.cisco.com/news/turn-distributed-capacity-into-ai-infrastructure" target="" rel="noopener">Lire l'article</a>
                             </div>
                         </div>
@@ -300,6 +308,18 @@
                 <li>FTP</li>
             </ul>
             <button type="button" onclick="closePopup2()">OK</button>
+        </div>
+        <div class="popup-overlay" id="popup-overlay3" onclick="closePopup3()"></div>
+        <div class="popup" id="popup3" role="dialog" aria-modal="true" aria-labelledby="popup3-title" aria-hidden="true">
+            <h3 id="popup3-title">Presentation de l'entreprise</h3>
+            <img src="img/entreprise.jpg" class="photo-kleber">
+            <ul class="popup-list">
+                <li>Kleber Malecot - 24 Av. de Verdun, 45170 Neuville-aux-Bois</li>
+                <li>Kléber Malécot est un groupe spécialisé dans la distribution, la location et la maintenance de matériels d'engins de chantier (Travaux Publics) et d'équipements agricoles</li>
+                <li>Implantée historiquement au 24 Avenue de Verdun à Neuville-aux-Bois (45170), la société y abrite son siège social et sa direction générale. Elle est notamment reconnue comme concessionnaire exclusif de grands constructeurs (dont Volvo Construction Equipment pour les TP) sur un large secteur géographique couvrant plusieurs départements</li>
+                <li>Sur son site neuvillois, le groupe s'appuie également sur son entité Malécot Poirier Agri, dédiée au conseil, à la vente et au service après-vente de tracteurs, matériels d'irrigation et engins agricoles.</li>
+            </ul>
+            <button type="button" onclick="closePopup3()">OK</button>
         </div>
         <footer>
             <div class="outro">

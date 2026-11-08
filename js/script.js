@@ -94,14 +94,18 @@ function togglePopup(popupId, overlayId, show) {
 }
 
 function openPopup()   { togglePopup("popup",  "popup-overlay",  true);  }
-function openPopup2()  { togglePopup("popup2", "popup-overlay2", true);  }
+function openPopup2()  { togglePopup("popup2", "popup-overlay2", true);  }    
+function openPopup3()  { togglePopup("popup3", "popup-overlay3", true); }
+
 function closePopup()  { togglePopup("popup",  "popup-overlay",  false); }
 function closePopup2() { togglePopup("popup2", "popup-overlay2", false); }
+function closePopup3() { togglePopup("popup3", "popup-overlay3", false); }
 
 document.addEventListener("keydown", e => {
     if (e.key === "Escape") {
         closePopup();
         closePopup2();
+        closePopup3();
     }
 });
 

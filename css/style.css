@@ -553,6 +553,16 @@ footer .depot-git p {
   }
 }
 
+.photo-kleber {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 220px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin: 0 auto;
+}     
+
 @media (max-width: 768px){
   .skill-item{
     width: calc(50% - 10px);
@@ -591,6 +601,8 @@ footer .depot-git p {
   opacity: 0;
   transition: transform 0.4s, opacity 0.4s, visibility 0.4s;
   z-index: 2000;
+  max-height: 90vh;
+  overflow-y: auto;
 }
 
 .popup.open-popup {
