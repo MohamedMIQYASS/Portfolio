@@ -68,6 +68,10 @@ nav ul {
   z-index: 2;
 }
 
+nav ul li:last-child{
+  margin-left: auto;
+}
+
 nav a {
   text-decoration: none;
   color: #fff;
@@ -491,6 +495,10 @@ footer .depot-git p {
   nav h1,
   .cursor {
     display: none;
+  }
+
+  nav ul li:last-child {
+    margin-left: 0;
   }
 
   .slides1 {
