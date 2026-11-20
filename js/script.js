@@ -156,12 +156,12 @@ if (veilleTrack) {
   });
 }
 
-
-
 const themeToggle = document.getElementById("theme-toggle");
 
+// Récupération du thème enregistré
 const savedTheme = localStorage.getItem("theme");
 
+// Application du thème sauvegardé
 if (savedTheme === "dark") {
     document.body.classList.add("dark-mode");
 }
@@ -174,24 +174,22 @@ function updateThemeButton() {
         : "🌙 Mode sombre";
 
     themeToggle.setAttribute("aria-pressed", isDark);
-
     themeToggle.setAttribute(
         "aria-label",
         isDark ? "Activer le mode clair" : "Activer le mode sombre"
     );
 }
 
-updateThemeButton();
-
-themeToggle.addEventListener("click", () => {
-
-    document.body.classList.toggle("dark-mode");
-
-    const isDark = document.body.classList.contains("dark-mode");
-
-    localStorage.setItem("theme", isDark ? "dark" : "light");
-
+if (themeToggle) {
     updateThemeButton();
-});
 
+    themeToggle.addEventListener("click", () => {
+        document.body.classList.toggle("dark-mode");
 
+        const isDark = document.body.classList.contains("dark-mode");
+
+        localStorage.setItem("theme", isDark ? "dark" : "light");
+
+        updateThemeButton();
+    });
+}
