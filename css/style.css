@@ -926,19 +926,80 @@ footer .depot-git p {
   }
 }
 
-.body.dark_mode .btn {
+/* Bouton de changement de thème */
+.theme-toggle {
+  background: #0072ff;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 9px 14px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  background: #00aaff;
+}
+
+body.dark-mode {
+  background-color: #0b0f19;
   color: #e5e7eb;
 }
 
-body , main , article , section , .veille-card , .veille-source , #contact-form, .popup {
+body.dark-mode main {
+  background-color: #0b0f19;
+}
+
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode p,
+body.dark-mode .skill-item h4 {
+  color: #e5e7eb;
+}
+
+body.dark-mode section {
+  border-bottom: 1px solid #252b3b;
+}
+
+body.dark-mode article,
+body.dark-mode .slides2 article,
+body.dark-mode .slides3 article,
+body.dark-mode .slides4 article,
+body.dark-mode .veille-card,
+body.dark-mode .veille-source {
+  background-color: #171d2b;
+  border-color: #30384a;
+}
+
+body.dark-mode .veille-source h4,
+body.dark-mode .veille-card a {
+  color: #58a6ff;
+}
+
+body.dark-mode .popup {
+  background-color: #171d2b;
+  color: #e5e7eb;
+}
+
+body.dark-mode .popup h3,
+body.dark-mode .popup-list {
+  color: #e5e7eb;
+}
+
+body,
+main,
+article,
+section,
+.veille-card,
+.veille-source,
+.popup {
   transition: background-color 0.3s ease,
               color 0.3s ease,
               border-color 0.3s ease;
 }
-
-
-
-
 
 
 
