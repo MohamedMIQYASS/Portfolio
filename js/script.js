@@ -96,10 +96,13 @@ function togglePopup(popupId, overlayId, show) {
 function openPopup()   { togglePopup("popup",  "popup-overlay",  true);  }
 function openPopup2()  { togglePopup("popup2", "popup-overlay2", true);  }    
 function openPopup3()  { togglePopup("popup3", "popup-overlay3", true); }
+function openPopup4() {  togglePopup("popup4", "popup-overlay4", true); document.getElementById("nom").focus({ preventScroll: true });}
 
 function closePopup()  { togglePopup("popup",  "popup-overlay",  false); }
 function closePopup2() { togglePopup("popup2", "popup-overlay2", false); }
 function closePopup3() { togglePopup("popup3", "popup-overlay3", false); }
+function closePopup4() { togglePopup("popup4", "popup-overlay4", false); }
+
 
 document.addEventListener("keydown", e => {
     if (e.key === "Escape") {
@@ -108,16 +111,15 @@ document.addEventListener("keydown", e => {
         closePopup3();
     }
 });
-
 const form = document.getElementById("contact-form");
 const formStatus = document.getElementById("form-status");
-const button = form.querySelector("button");
+const button = form.querySelector("button[type='submit']");
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
   button.disabled = true;
-  status.className = "";
-  status.textContent = "Envoi en cours...";
+  formStatus.className = "";
+  formStatus.textContent = "Envoi en cours...";
 
   try {
     const response = await fetch(form.action, {
@@ -127,20 +129,24 @@ form.addEventListener("submit", async (e) => {
     });
 
     if (response.ok) {
-      status.textContent = "Merci ! Votre message a bien été envoyé.";
-      status.className = "success";
+      formStatus.textContent = "Merci ! Votre message a bien été envoyé.";
+      formStatus.className = "success";
       form.reset();
+      setTimeout(() => {
+        closePopup4();
+        formStatus.textContent = "";
+        formStatus.className = "";
+      }, 2500);
     } else {
       throw new Error();
     }
   } catch {
-    status.textContent = "Une erreur est survenue. Réessayez ou contactez-moi via LinkedIn.";
-    status.className = "error";
+    formStatus.textContent = "Une erreur est survenue. Réessayez ou contactez-moi via LinkedIn.";
+    formStatus.className = "error";
   } finally {
     button.disabled = false;
   }
 });
-
 const veilleTrack = document.querySelector('.veille-track');
 
 
@@ -205,3 +211,12 @@ if (themeToggle) {
         updateThemeButton();
     });
 }
+
+document.addEventListener("keydown", e => {
+    if (e.key === "Escape") {
+        closePopup();
+        closePopup2();
+        closePopup3();
+        closePopup4();
+    }
+});

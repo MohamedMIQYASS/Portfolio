@@ -69,6 +69,10 @@ nav ul {
 }
 
 nav ul li:last-child{
+  margin-left: 0;
+}
+
+nav ul li.nav-mail-li {
   margin-left: auto;
 }
 
@@ -498,6 +502,10 @@ footer .depot-git p {
   }
 
   nav ul li:last-child {
+    margin-left: 0;
+  }
+
+  nav ul li.nav-mail-li {
     margin-left: 0;
   }
 
@@ -1007,6 +1015,73 @@ section,
   transition: background-color 0.3s ease,
               color 0.3s ease,
               border-color 0.3s ease;
+}
+
+.mail-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #0072ff;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 7px 12px;
+  cursor: pointer;
+}
+
+.mail-toggle:hover {
+  background: #00aaff;
+}
+
+.mail-toggle svg {
+  display: block;
+  width: 18px;
+  height: 18px;
+}
+
+.popup.popup-contact {
+  width: 520px;
+  background: #1e1e2e;
+  color: #e0e0e0;
+  border: 1px solid #333;
+  padding: 0 24px 24px;
+}
+
+body.dark-mode .popup.popup-contact {
+  background-color: #1e1e2e;
+}
+
+.popup-contact h3 {
+  color: #fff;
+  margin: 28px 0 8px;
+}
+
+.popup-contact #contact-form {
+  max-width: none;
+  margin: 0;
+  padding: 1rem 0 0;
+  background: transparent;
+  border: none;
+  text-align: left;
+}
+
+.popup .popup-close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  width: 36px;
+  height: 36px;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+  font-size: 28px;
+  line-height: 1;
+  color: #e0e0e0;
+}
+
+.popup .popup-close:hover {
+  color: #fff;
 }
 
 

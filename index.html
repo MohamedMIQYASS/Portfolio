@@ -16,10 +16,23 @@
                     <li><a href="#competences">COMPÉTENCES</a></li>
                     <li><a href="#projets">PROJETS</a></li>
                     <li><a href="#veille">VEILLE</a></li>
-                    <li><a href="#contact">CONTACT</a></li>
                     <li><a href="fichiers/CV Mohamed MIQYASS.pdf" target="_blank" rel="noopener noreferrer" download>MON CV</a></li>
                     <li><a href="https://www.linkedin.com/in/mohamed-miqyass" target="_blank" rel="noopener noreferrer"><img src="img/Linkedin-Logo.png" class="lk" alt="LinkedIn"></a></li>
                     <li><a href="https://github.com/MohamedMIQYASS" target="_blank" rel="noopener noreferrer"><img src="img/github.png" class="git" alt="GitHub"></a></li>
+                    <li class="nav-mail-li">
+                        <button id="contact-toggle"
+                            class="mail-toggle"
+                            type="button"
+                            aria-label="Me contacter"
+                            aria-haspopup="dialog"
+                            onclick="openPopup4()">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                           <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+                           <polyline points="3,7 12,13 21,7"></polyline>
+                            </svg>
+                    </button>
+                    </li>
                     <li>
                         <button id="theme-toggle"
                         class="theme-toggle"
@@ -262,32 +275,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="slides6" id="contact">
-                    <h2>Contact</h2>
-                    <form id="contact-form" action ="https://formspree.io/f/mljgonrb" method="POST">
-                        <div class="form-group">
-                            <label for="nom">Nom</label>
-                            <input type="text" id="nom" name="nom" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Sujet</label>
-                            <input type="text" id="sujet" name="sujet" placeholder="Objet du message " required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" required></textarea>
-                        </div>
-                        <input type="text" name="_gotcha" style="display: none" tabindex="-1" autocomplete="off">
-                        <button type="submit">Envoyer</button>
-                        <p id="form-status" role="status"></p>
-                    </form>
-                    <section class="contact">
-                    </section>
-                </div>
             </div>
         </main>
         <div class="popup-overlay" id="popup-overlay" onclick="closePopup()"></div>
@@ -328,6 +315,32 @@
             </ul>
             <button type="button" onclick="closePopup3()">OK</button>
         </div>
+        <div class="popup-overlay" id="popup-overlay4" onclick="closePopup4()"></div>
+        <div class="popup popup-contact" id="popup4" role="dialog" aria-modal="true" aria-labelledby="popup4-title" aria-hidden="true">
+            <button type="button" class="popup-close" onclick="closePopup4()" aria-label="Fermer">×</button>
+            <h3 id="popup4-title">Me contacter</h3>
+            <form id="contact-form" action="https://formspree.io/f/mljgonrb" method="POST">
+                <div class="form-group">
+                <label for="nom">Nom</label>
+            <input type="text" id="nom" name="nom" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="sujet">Sujet</label>
+            <input type="text" id="sujet" name="sujet" placeholder="Objet du message" required>
+        </div>
+        <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required></textarea>
+        </div>
+        <input type="text" name="_gotcha" style="display: none" tabindex="-1" autocomplete="off">
+        <button type="submit">Envoyer</button>
+        <p id="form-status" role="status"></p>
+    </form>
+</div>
         <footer>
             <div class="outro">
                 <p>Portfolio créé par Mohamed MIQYASS en HTML/CSS</p>
