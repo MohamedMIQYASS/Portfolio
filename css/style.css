@@ -700,6 +700,16 @@ footer .depot-git {
   border-radius: 6px;
 }
 
+.popup img.mission {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 220px;
+  margin: 30px auto 0;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
 .popup-ok {
   width: 100%;
   margin-top: 24px;
