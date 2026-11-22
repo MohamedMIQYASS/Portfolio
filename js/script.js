@@ -1,33 +1,105 @@
 "use strict";
+
+const MOBILE_BREAKPOINT = 768;
+const FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled])';
+
+const popupOverlay = document.getElementById("popup-overlay");
+let activePopup = null;
+let lastTrigger = null;
+
+function openPopup(id, trigger) {
+    const popup = document.getElementById(id);
+    if (!popup || !popupOverlay) return;
+    if (activePopup) closePopup(false);
+
+    activePopup = popup;
+    lastTrigger = trigger || null;
+
+    popup.classList.add("open-popup");
+    popupOverlay.classList.add("open-popup");
+    document.body.classList.add("popup-open");
+
+    const first = popup.querySelector("[data-autofocus]") || popup.querySelector(FOCUSABLE);
+    if (first) first.focus({ preventScroll: true });
+}
+
+function closePopup(restoreFocus = true) {
+    if (!activePopup) return;
+
+    activePopup.classList.remove("open-popup");
+    popupOverlay.classList.remove("open-popup");
+    document.body.classList.remove("popup-open");
+    activePopup = null;
+
+    if (restoreFocus && lastTrigger) lastTrigger.focus({ preventScroll: true });
+    lastTrigger = null;
+}
+
+function trapFocus(e) {
+    const items = [...activePopup.querySelectorAll(FOCUSABLE)].filter(el => el.offsetParent !== null);
+    if (!items.length) return;
+
+    const first = items[0];
+    const last = items[items.length - 1];
+
+    if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+    }
+}
+
+function initPopups() {
+    if (!popupOverlay) return;
+
+    document.addEventListener("click", e => {
+        const opener = e.target.closest("[data-popup-target]");
+        if (opener) {
+            openPopup(opener.dataset.popupTarget, opener);
+            return;
+        }
+        if (e.target.closest("[data-popup-close]")) closePopup();
+    });
+
+    document.addEventListener("keydown", e => {
+        if (!activePopup) return;
+
+        if (e.key === "Escape") {
+            closePopup();
+        } else if (e.key === "Tab") {
+            trapFocus(e);
+        }
+    });
+}
+
 function initTypewriter() {
     const targets = [...document.querySelectorAll(".typewriter")];
     if (!targets.length) return;
-
-    // Respecte le réglage "réduire les animations" du système
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const terminal = targets[0].closest(".terminal");
     const texts = targets.map(el => el.textContent);
+    const speeds = [70, 15];
+    const delays = [600, 500];
 
-    // On fige la hauteur du terminal pour éviter que la page saute pendant la frappe
     if (terminal) terminal.style.minHeight = `${terminal.offsetHeight}px`;
     targets.forEach(el => { el.textContent = ""; });
 
     const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
-    const speeds = [70, 15]; // ms par caractère : commande, puis texte de présentation
 
     async function run() {
         for (let i = 0; i < targets.length; i++) {
             const el = targets[i];
             el.classList.add("typing");
-            await wait(i === 0 ? 600 : 500);
+            await wait(delays[i] ?? 500);
 
             for (const char of texts[i]) {
                 el.textContent += char;
                 await wait(speeds[i] ?? 15);
             }
 
-            // Le curseur ne reste que sur la dernière ligne
             if (i < targets.length - 1) el.classList.remove("typing");
         }
         if (terminal) terminal.style.minHeight = "";
@@ -38,15 +110,14 @@ function initTypewriter() {
 
 function initNav() {
     const nav = document.querySelector("nav");
-    if (!nav) return;
+    const navUl = nav?.querySelector("ul");
+    const blob = nav?.querySelector(".nav-blob");
+    const burger = nav?.querySelector(".burger");
+    if (!nav || !navUl || !blob || !burger) return;
 
-    const navUl = nav.querySelector("ul");
     const allLinks = navUl.querySelectorAll("a");
     const sectionLinks = navUl.querySelectorAll('a[href^="#"]');
-    const blob = nav.querySelector(".nav-blob");
-    const burger = nav.querySelector(".burger");
-
-    const isMobile = () => window.innerWidth <= 768;
+    const isMobile = () => window.innerWidth <= MOBILE_BREAKPOINT;
 
     function closeMenu() {
         navUl.classList.remove("open");
@@ -82,18 +153,20 @@ function initNav() {
         const open = navUl.classList.toggle("open");
         burger.setAttribute("aria-expanded", String(open));
     });
-    allLinks.forEach(link => link.addEventListener("click", closeMenu));
-    nav.querySelectorAll("[data-popup-target]").forEach(btn => btn.addEventListener("click", closeMenu));
-    document.addEventListener("keydown", e => {
-        if (e.key === "Escape") closeMenu();
-    });
 
     allLinks.forEach(link => {
+        link.addEventListener("click", closeMenu);
         link.addEventListener("mouseenter", () => moveBlob(link));
         link.addEventListener("focus", () => moveBlob(link));
     });
+
+    nav.querySelectorAll("[data-popup-target]").forEach(btn => btn.addEventListener("click", closeMenu));
     navUl.addEventListener("mouseleave", resetBlobToActive);
     navUl.addEventListener("focusout", resetBlobToActive);
+
+    document.addEventListener("keydown", e => {
+        if (e.key === "Escape") closeMenu();
+    });
 
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
@@ -108,9 +181,6 @@ function initNav() {
         if (target) observer.observe(target);
     });
 
-    if (sectionLinks.length) setActive(sectionLinks[0]);
-    document.fonts.ready.then(resetBlobToActive);
-
     window.addEventListener("scroll", () => {
         const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
         if (atBottom && sectionLinks.length) setActive(sectionLinks[sectionLinks.length - 1]);
@@ -120,75 +190,9 @@ function initNav() {
         if (!isMobile()) closeMenu();
         resetBlobToActive();
     });
-}
 
-const popupOverlay = document.getElementById("popup-overlay");
-let activePopup = null;
-let lastTrigger = null;
-
-const FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled])';
-
-function openPopup(id, trigger) {
-    const popup = document.getElementById(id);
-    if (!popup) return;
-    if (activePopup) closePopup(false);
-
-    activePopup = popup;
-    lastTrigger = trigger || null;
-
-    popup.classList.add("open-popup");
-    popupOverlay.classList.add("open-popup");
-    document.body.classList.add("popup-open");
-
-    const first = popup.querySelector("[data-autofocus]") || popup.querySelector(FOCUSABLE);
-    if (first) first.focus({ preventScroll: true });
-}
-
-function closePopup(restoreFocus = true) {
-    if (!activePopup) return;
-    activePopup.classList.remove("open-popup");
-    popupOverlay.classList.remove("open-popup");
-    document.body.classList.remove("popup-open");
-    activePopup = null;
-
-    if (restoreFocus && lastTrigger) lastTrigger.focus({ preventScroll: true });
-    lastTrigger = null;
-}
-
-function initPopups() {
-    if (!popupOverlay) return;
-
-    document.addEventListener("click", e => {
-        const opener = e.target.closest("[data-popup-target]");
-        if (opener) {
-            openPopup(opener.dataset.popupTarget, opener);
-            return;
-        }
-        if (e.target.closest("[data-popup-close]")) closePopup();
-    });
-
-    document.addEventListener("keydown", e => {
-        if (!activePopup) return;
-
-        if (e.key === "Escape") {
-            closePopup();
-            return;
-        }
-
-        if (e.key === "Tab") {
-            const items = [...activePopup.querySelectorAll(FOCUSABLE)].filter(el => el.offsetParent !== null);
-            if (!items.length) return;
-            const first = items[0];
-            const last = items[items.length - 1];
-            if (e.shiftKey && document.activeElement === first) {
-                e.preventDefault();
-                last.focus();
-            } else if (!e.shiftKey && document.activeElement === last) {
-                e.preventDefault();
-                first.focus();
-            }
-        }
-    });
+    if (sectionLinks.length) setActive(sectionLinks[0]);
+    document.fonts.ready.then(resetBlobToActive);
 }
 
 function initContactForm() {
@@ -197,6 +201,7 @@ function initContactForm() {
     if (!form || !status) return;
 
     const submitButton = form.querySelector("button[type='submit']");
+    let closeTimer = null;
 
     function setStatus(message, type = "") {
         status.textContent = message;
@@ -205,6 +210,7 @@ function initContactForm() {
 
     form.addEventListener("submit", async e => {
         e.preventDefault();
+        clearTimeout(closeTimer);
         submitButton.disabled = true;
         setStatus("Envoi en cours...");
 
@@ -219,7 +225,7 @@ function initContactForm() {
 
             setStatus("Merci ! Votre message a bien été envoyé.", "success");
             form.reset();
-            setTimeout(() => {
+            closeTimer = setTimeout(() => {
                 closePopup();
                 setStatus("");
             }, 2500);
@@ -242,6 +248,7 @@ function initVeilleSlider() {
     };
 
     const scrollTrack = direction => track.scrollBy({ left: direction * step(), behavior: "smooth" });
+
     document.querySelector(".veille-btn.prev")?.addEventListener("click", () => scrollTrack(-1));
     document.querySelector(".veille-btn.next")?.addEventListener("click", () => scrollTrack(1));
 }
@@ -262,7 +269,10 @@ function initTheme() {
         const isDark = root.classList.toggle("dark-mode");
         try {
             localStorage.setItem("theme", isDark ? "dark" : "light");
-        } catch {  }
+        } catch {
+            updateButton();
+            return;
+        }
         updateButton();
     });
 
