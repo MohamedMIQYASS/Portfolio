@@ -701,6 +701,32 @@ footer .depot-git {
   color: var(--accent);
 }
 
+.popup-imgs{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.popup-imgs img {
+  display: block;
+  height: 50px;
+  width: auto;
+  max-width: 100%;
+  padding: 4px;
+  background: #fff;
+  border-radius: 6px;
+  object-fit: contain;
+}
+
+.popup-imgs img.schema {
+  width: 100%;
+  height: auto;
+  max-height: 160px;
+}
+
+
 .photo-kleber {
   display: block;
   width: 100%;
