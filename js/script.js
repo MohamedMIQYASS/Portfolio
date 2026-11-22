@@ -148,6 +148,11 @@ form.addEventListener("submit", async (e) => {
   }
 });
 const veilleTrack = document.querySelector('.veille-track');
+const veilleStep = () => {
+    const card = veilleTrack.querySelector('.veille-card');
+    const gap = parseFloat(getComputedStyle(veilleTrack).gap) || 16;
+    return card ? card.offsetWidth + gap : 300;
+};
 
 
 
