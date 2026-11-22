@@ -94,12 +94,18 @@
                         <h4>BUT Informatique</h4>
                         <p>2024-2025</p>
                         <p>IUT d'Orléans</p>
+                        <button type="button" class="btn" data-popup-target="popup-compétencesBUT" aria-haspopup="dialog" aria-label="Compétences travaillées">
+                            <img src="img/info.png" alt="" width="20" height="20">
+                        </button>
                     </article>
                     <article class="sti2d">
                         <img src="img/Logo benjam.png" class="logo benjam" alt="Logo Lycée Benjamin Franklin" loading="lazy">
                         <h4>BAC STI2D - Option SIN</h4>
                         <p>2024</p>
                         <p>Lycée Benjamin Franklin - Orléans</p>
+                        <button type="button" class="btn" data-popup-target="popup-compétencesSTI" aria-haspopup="dialog" aria-label="Compétences travaillées">
+                            <img src="img/info.png" alt="" width="20" height="20">
+                        </button>
                     </article>
                 </section>
 
@@ -297,6 +303,38 @@
     </footer>
 
     <div class="popup-overlay" id="popup-overlay" data-popup-close></div>
+
+    <div class="popup" id="popup-compétencesSTI" role="dialog" aria-modal="true" aria-labelledby="popup-compétencesSTI-title">
+        <h3 id="popup-compétencesSTI-title">Compétences travaillées</h3>
+        <ul class="popup-list">
+            <li>Elaboration d'interfaces IHM avec Profilab Expert</li>
+            <img src="img/profilab.png">
+            <img src="img/schema profilab.png">
+            <li>Programmation de carte éléctroniques Arduino en C++</li>
+            <img src="img/c++.png">
+            <img src="img/arduino.jpg">
+            <li>Elaboration de réseaux TCP/IP</li>
+            <img src="img/cisco2.jpg">
+        </ul>
+        <button type="button" class="popup-ok" data-popup-close>OK</button>
+    </div>
+    <div class="popup" id="popup-compétencesBUT" role="dialog" aria-modal="true" aria-labelledby="popup-compétencesBUT-title">
+        <h3 id="popup-compétencesBUT-title">Compétences travaillées</h3>
+        <ul class="popup-list">
+            <li>Développemment web en HTML/CSS</li>
+            <img src="img/html.png">
+            <img src="img/css.png">
+            <li>Développemment d'application en Java(Javafx) et Python</li>
+            <img src="img/java.jpg">
+            <img src="img/python.png">
+            <img src="img/JavaFX_Logo.png">
+            <li>Gestion de SGBDR ( Mysql , Mariadb) en SQL</li>
+            <img src="img/mysql.png">
+            <img src="img/mariadb.png">
+            <img src="img/sql.png">
+        </ul>
+        <button type="button" class="popup-ok" data-popup-close>OK</button>
+    </div>
 
     <div class="popup" id="popup-activites" role="dialog" aria-modal="true" aria-labelledby="popup-activites-title">
         <h3 id="popup-activites-title">Activités réalisées</h3>
