@@ -271,6 +271,17 @@ nav li a:hover img {
   white-space: pre-wrap;
 }
 
+.typewriter.typing::after  {
+  content: "▋";
+  margin-left: 2px;
+  animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+
 .terminal_header {
   display: flex;
   align-items: center;

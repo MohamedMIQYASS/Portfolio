@@ -1,4 +1,40 @@
 "use strict";
+function initTypewriter() {
+    const targets = [...document.querySelectorAll(".typewriter")];
+    if (!targets.length) return;
+
+    // Respecte le réglage "réduire les animations" du système
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const terminal = targets[0].closest(".terminal");
+    const texts = targets.map(el => el.textContent);
+
+    // On fige la hauteur du terminal pour éviter que la page saute pendant la frappe
+    if (terminal) terminal.style.minHeight = `${terminal.offsetHeight}px`;
+    targets.forEach(el => { el.textContent = ""; });
+
+    const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
+    const speeds = [70, 15]; // ms par caractère : commande, puis texte de présentation
+
+    async function run() {
+        for (let i = 0; i < targets.length; i++) {
+            const el = targets[i];
+            el.classList.add("typing");
+            await wait(i === 0 ? 600 : 500);
+
+            for (const char of texts[i]) {
+                el.textContent += char;
+                await wait(speeds[i] ?? 15);
+            }
+
+            // Le curseur ne reste que sur la dernière ligne
+            if (i < targets.length - 1) el.classList.remove("typing");
+        }
+        if (terminal) terminal.style.minHeight = "";
+    }
+
+    run();
+}
 
 function initNav() {
     const nav = document.querySelector("nav");
@@ -238,3 +274,4 @@ initPopups();
 initContactForm();
 initVeilleSlider();
 initTheme();
+initTypewriter();
