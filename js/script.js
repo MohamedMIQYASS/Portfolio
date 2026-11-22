@@ -1,227 +1,240 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const nav = document.querySelector('nav');
-    const navUl = nav.querySelector('ul');
-    const allLinks = navUl.querySelectorAll('a');
+"use strict";
+
+function initNav() {
+    const nav = document.querySelector("nav");
+    if (!nav) return;
+
+    const navUl = nav.querySelector("ul");
+    const allLinks = navUl.querySelectorAll("a");
     const sectionLinks = navUl.querySelectorAll('a[href^="#"]');
-    const blob = nav.querySelector('.nav-blob');
-    const burger = nav.querySelector('.burger');
+    const blob = nav.querySelector(".nav-blob");
+    const burger = nav.querySelector(".burger");
 
     const isMobile = () => window.innerWidth <= 768;
 
     function closeMenu() {
-        navUl.classList.remove('open');
-        burger.setAttribute('aria-expanded', 'false');
+        navUl.classList.remove("open");
+        burger.setAttribute("aria-expanded", "false");
     }
 
     function moveBlob(link) {
         if (isMobile()) return;
-        const li = link.closest('li');
+        const li = link.closest("li");
         blob.style.left = `${li.offsetLeft}px`;
         blob.style.top = `${li.offsetTop}px`;
         blob.style.width = `${li.offsetWidth}px`;
         blob.style.height = `${li.offsetHeight}px`;
-        blob.style.opacity = '1';
+        blob.style.opacity = "1";
     }
 
     function resetBlobToActive() {
-        const active = navUl.querySelector('a.active');
+        const active = navUl.querySelector("a.active");
         if (active) {
             moveBlob(active);
         } else {
-            blob.style.opacity = '0';
-            blob.style.width = '0';
+            blob.style.opacity = "0";
+            blob.style.width = "0";
         }
     }
 
     function setActive(link) {
-        sectionLinks.forEach(l => l.classList.toggle('active', l === link));
-        if (!navUl.matches(':hover')) resetBlobToActive();
+        sectionLinks.forEach(l => l.classList.toggle("active", l === link));
+        if (!navUl.matches(":hover")) resetBlobToActive();
     }
 
-    // Menu burger
-    burger.addEventListener('click', () => {
-        const open = navUl.classList.toggle('open');
-        burger.setAttribute('aria-expanded', String(open));
+    burger.addEventListener("click", () => {
+        const open = navUl.classList.toggle("open");
+        burger.setAttribute("aria-expanded", String(open));
     });
-    allLinks.forEach(link => link.addEventListener('click', closeMenu));
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+    allLinks.forEach(link => link.addEventListener("click", closeMenu));
+    nav.querySelectorAll("[data-popup-target]").forEach(btn => btn.addEventListener("click", closeMenu));
+    document.addEventListener("keydown", e => {
+        if (e.key === "Escape") closeMenu();
+    });
 
-    // Bulle de survol
     allLinks.forEach(link => {
-        link.addEventListener('mouseenter', () => moveBlob(link));
-        link.addEventListener('focus', () => moveBlob(link));
+        link.addEventListener("mouseenter", () => moveBlob(link));
+        link.addEventListener("focus", () => moveBlob(link));
     });
-    navUl.addEventListener('mouseleave', resetBlobToActive);
-    navUl.addEventListener('focusout', resetBlobToActive);
+    navUl.addEventListener("mouseleave", resetBlobToActive);
+    navUl.addEventListener("focusout", resetBlobToActive);
 
-    // Lien actif selon la section visible
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const link = navUl.querySelector(`a[href="#${entry.target.id}"]`);
-                if (link) setActive(link);
-            }
+            if (!entry.isIntersecting) return;
+            const link = navUl.querySelector(`a[href="#${entry.target.id}"]`);
+            if (link) setActive(link);
         });
-    }, { rootMargin: '-40% 0px -55% 0px' });
+    }, { rootMargin: "-40% 0px -55% 0px" });
 
     sectionLinks.forEach(link => {
-        const target = document.querySelector(link.getAttribute('href'));
+        const target = document.querySelector(link.getAttribute("href"));
         if (target) observer.observe(target);
     });
 
     if (sectionLinks.length) setActive(sectionLinks[0]);
     document.fonts.ready.then(resetBlobToActive);
 
-    // Bas de page : activer le dernier lien (la section Contact est trop courte pour être détectée)
-    window.addEventListener('scroll', () => {
-        const bottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
-        if (bottom && sectionLinks.length) setActive(sectionLinks[sectionLinks.length - 1]);
+    window.addEventListener("scroll", () => {
+        const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+        if (atBottom && sectionLinks.length) setActive(sectionLinks[sectionLinks.length - 1]);
     }, { passive: true });
 
-    // Un seul écouteur resize
-    window.addEventListener('resize', () => {
+    window.addEventListener("resize", () => {
         if (!isMobile()) closeMenu();
         resetBlobToActive();
     });
-});
-
-function togglePopup(popupId, overlayId, show) {
-    const popup = document.getElementById(popupId);
-    const overlay = document.getElementById(overlayId);
-    popup.classList.toggle("open-popup", show);
-    overlay.classList.toggle("open-popup", show);
-    popup.setAttribute("aria-hidden", String(!show));
 }
 
-function openPopup()   { togglePopup("popup",  "popup-overlay",  true);  }
-function openPopup2()  { togglePopup("popup2", "popup-overlay2", true);  }    
-function openPopup3()  { togglePopup("popup3", "popup-overlay3", true); }
-function openPopup4() {  togglePopup("popup4", "popup-overlay4", true); document.getElementById("nom").focus({ preventScroll: true });}
+const popupOverlay = document.getElementById("popup-overlay");
+let activePopup = null;
+let lastTrigger = null;
 
-function closePopup()  { togglePopup("popup",  "popup-overlay",  false); }
-function closePopup2() { togglePopup("popup2", "popup-overlay2", false); }
-function closePopup3() { togglePopup("popup3", "popup-overlay3", false); }
-function closePopup4() { togglePopup("popup4", "popup-overlay4", false); }
+const FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled])';
 
+function openPopup(id, trigger) {
+    const popup = document.getElementById(id);
+    if (!popup) return;
+    if (activePopup) closePopup(false);
 
-document.addEventListener("keydown", e => {
-    if (e.key === "Escape") {
-        closePopup();
-        closePopup2();
-        closePopup3();
-    }
-});
-const form = document.getElementById("contact-form");
-const formStatus = document.getElementById("form-status");
-const button = form.querySelector("button[type='submit']");
+    activePopup = popup;
+    lastTrigger = trigger || null;
 
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
-  button.disabled = true;
-  formStatus.className = "";
-  formStatus.textContent = "Envoi en cours...";
+    popup.classList.add("open-popup");
+    popupOverlay.classList.add("open-popup");
+    document.body.classList.add("popup-open");
 
-  try {
-    const response = await fetch(form.action, {
-      method: "POST",
-      body: new FormData(form),
-      headers: { Accept: "application/json" }
+    const first = popup.querySelector("[data-autofocus]") || popup.querySelector(FOCUSABLE);
+    if (first) first.focus({ preventScroll: true });
+}
+
+function closePopup(restoreFocus = true) {
+    if (!activePopup) return;
+    activePopup.classList.remove("open-popup");
+    popupOverlay.classList.remove("open-popup");
+    document.body.classList.remove("popup-open");
+    activePopup = null;
+
+    if (restoreFocus && lastTrigger) lastTrigger.focus({ preventScroll: true });
+    lastTrigger = null;
+}
+
+function initPopups() {
+    if (!popupOverlay) return;
+
+    document.addEventListener("click", e => {
+        const opener = e.target.closest("[data-popup-target]");
+        if (opener) {
+            openPopup(opener.dataset.popupTarget, opener);
+            return;
+        }
+        if (e.target.closest("[data-popup-close]")) closePopup();
     });
 
-    if (response.ok) {
-      formStatus.textContent = "Merci ! Votre message a bien été envoyé.";
-      formStatus.className = "success";
-      form.reset();
-      setTimeout(() => {
-        closePopup4();
-        formStatus.textContent = "";
-        formStatus.className = "";
-      }, 2500);
-    } else {
-      throw new Error();
-    }
-  } catch {
-    formStatus.textContent = "Une erreur est survenue. Réessayez ou contactez-moi via LinkedIn.";
-    formStatus.className = "error";
-  } finally {
-    button.disabled = false;
-  }
-});
-const veilleTrack = document.querySelector('.veille-track');
-const veilleStep = () => {
-    const card = veilleTrack.querySelector('.veille-card');
-    const gap = parseFloat(getComputedStyle(veilleTrack).gap) || 16;
-    return card ? card.offsetWidth + gap : 300;
-};
+    document.addEventListener("keydown", e => {
+        if (!activePopup) return;
 
+        if (e.key === "Escape") {
+            closePopup();
+            return;
+        }
 
-
-
-    const nextButton = document.querySelector('.veille-btn.next');
-    const prevButton = document.querySelector('.veille-btn.prev');
-
-    if (nextButton) {
-        nextButton.addEventListener('click', () => {
-            veilleTrack.scrollBy({
-                left: veilleStep(),
-                behavior: 'smooth'
-            });
-        });
-    }
-
-    if (prevButton) {
-        prevButton.addEventListener('click', () => {
-            veilleTrack.scrollBy({
-                left: -veilleStep(),
-                behavior: 'smooth'
-            });
-        });
-    }
-
-
-const themeToggle = document.getElementById("theme-toggle");
-
-// Récupération du thème enregistré
-const savedTheme = localStorage.getItem("theme");
-
-// Application du thème sauvegardé
-if (savedTheme === "dark") {
-    document.body.classList.add("dark-mode");
-}
-
-function updateThemeButton() {
-    const isDark = document.body.classList.contains("dark-mode");
-
-    themeToggle.textContent = isDark
-        ? "☀️ Mode clair"
-        : "🌙 Mode sombre";
-
-    themeToggle.setAttribute("aria-pressed", isDark);
-    themeToggle.setAttribute(
-        "aria-label",
-        isDark ? "Activer le mode clair" : "Activer le mode sombre"
-    );
-}
-
-if (themeToggle) {
-    updateThemeButton();
-
-    themeToggle.addEventListener("click", () => {
-        document.body.classList.toggle("dark-mode");
-
-        const isDark = document.body.classList.contains("dark-mode");
-
-        localStorage.setItem("theme", isDark ? "dark" : "light");
-
-        updateThemeButton();
+        if (e.key === "Tab") {
+            const items = [...activePopup.querySelectorAll(FOCUSABLE)].filter(el => el.offsetParent !== null);
+            if (!items.length) return;
+            const first = items[0];
+            const last = items[items.length - 1];
+            if (e.shiftKey && document.activeElement === first) {
+                e.preventDefault();
+                last.focus();
+            } else if (!e.shiftKey && document.activeElement === last) {
+                e.preventDefault();
+                first.focus();
+            }
+        }
     });
 }
 
-document.addEventListener("keydown", e => {
-    if (e.key === "Escape") {
-        closePopup();
-        closePopup2();
-        closePopup3();
-        closePopup4();
+function initContactForm() {
+    const form = document.getElementById("contact-form");
+    const status = document.getElementById("form-status");
+    if (!form || !status) return;
+
+    const submitButton = form.querySelector("button[type='submit']");
+
+    function setStatus(message, type = "") {
+        status.textContent = message;
+        status.className = type;
     }
-});
+
+    form.addEventListener("submit", async e => {
+        e.preventDefault();
+        submitButton.disabled = true;
+        setStatus("Envoi en cours...");
+
+        try {
+            const response = await fetch(form.action, {
+                method: "POST",
+                body: new FormData(form),
+                headers: { Accept: "application/json" }
+            });
+
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+            setStatus("Merci ! Votre message a bien été envoyé.", "success");
+            form.reset();
+            setTimeout(() => {
+                closePopup();
+                setStatus("");
+            }, 2500);
+        } catch {
+            setStatus("Une erreur est survenue. Réessayez ou contactez-moi via LinkedIn.", "error");
+        } finally {
+            submitButton.disabled = false;
+        }
+    });
+}
+
+function initVeilleSlider() {
+    const track = document.querySelector(".veille-track");
+    if (!track) return;
+
+    const step = () => {
+        const card = track.querySelector(".veille-card");
+        const gap = parseFloat(getComputedStyle(track).gap) || 16;
+        return card ? card.offsetWidth + gap : 300;
+    };
+
+    const scrollTrack = direction => track.scrollBy({ left: direction * step(), behavior: "smooth" });
+    document.querySelector(".veille-btn.prev")?.addEventListener("click", () => scrollTrack(-1));
+    document.querySelector(".veille-btn.next")?.addEventListener("click", () => scrollTrack(1));
+}
+
+function initTheme() {
+    const toggle = document.getElementById("theme-toggle");
+    if (!toggle) return;
+
+    const root = document.documentElement;
+
+    function updateButton() {
+        const isDark = root.classList.contains("dark-mode");
+        toggle.textContent = isDark ? "☀️ Mode clair" : "🌙 Mode sombre";
+        toggle.setAttribute("aria-label", isDark ? "Activer le mode clair" : "Activer le mode sombre");
+    }
+
+    toggle.addEventListener("click", () => {
+        const isDark = root.classList.toggle("dark-mode");
+        try {
+            localStorage.setItem("theme", isDark ? "dark" : "light");
+        } catch {  }
+        updateButton();
+    });
+
+    updateButton();
+}
+
+initNav();
+initPopups();
+initContactForm();
+initVeilleSlider();
+initTheme();
