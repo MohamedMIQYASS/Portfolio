@@ -55,19 +55,27 @@
 
             <div class="hero" id="presentation">
                 <h2>Mohamed <span>MIQYASS</span></h2>
-                <div class="terminal">
+            
+                <div class="terminal" id="terminal">
                     <div class="terminal_header">
                         <div class="buttons">
-                            <span class="btn-red"></span>
-                            <span class="btn-yellow"></span>
-                            <span class="btn-green"></span>
+                            <button type="button" class="btn-red" data-terminal-action="close" aria-label="Fermer le terminal"></button>
+                            <button type="button" class="btn-yellow" data-terminal-action="minimize" aria-label="Réduire le terminal"></button>
+                            <button type="button" class="btn-green" data-terminal-action="maximize" aria-label="Agrandir le terminal"></button>
                         </div>
                         <span class="terminal-title">bash</span>
                     </div>
-                    <p><span class="user">mohamed@Debian</span>:<span class="path">~</span>$ <span class="typewriter">nano /var/www</span></p>
-                    <p><span class="user">mohamed@Debian</span>:<span class="path">~</span>$ <span class="typewriter">Je suis actuellement étudiant en 2ème année de BTS SIO (Services Informatiques aux Organisations) option SISR (Solutions d'infrastructures de systèmes et réseaux). Je souhaite intégrer un bachelor informatique juste après l'obtention du BTS, et à l'avenir, travailler dans le domaine de l'administration des réseaux et systèmes et de la cybersécurité. Ce portfolio vous donnera un aperçu de mon parcours, mes compétences et bien plus...</span></p>
+            
+                    <div class="terminal-body">
+                        <p><span class="user">mohamed@Debian</span>:<span class="path">~</span>$ <span class="typewriter">nano /var/www</span></p>
+                        <p><span class="user">mohamed@Debian</span>:<span class="path">~</span>$ <span class="typewriter">Je suis actuellement étudiant en 2ème année de BTS SIO (Services Informatiques aux Organisations) option SISR (Solutions d'infrastructures de systèmes et réseaux). Je souhaite intégrer un bachelor informatique juste après l'obtention du BTS, et à l'avenir, travailler dans le domaine de l'administration des réseaux et systèmes et de la cybersécurité. Ce portfolio vous donnera un aperçu de mon parcours, mes compétences et bien plus...</span></p>
+                    </div>
                 </div>
+            
+                <button type="button" id="terminal-reopen" class="terminal-reopen" hidden>💻 Rouvrir le terminal</button>
             </div>
+
+            <button type="button" id="terminal-reopen" class="terminal-reopen" hidden>💻 Rouvrir le terminal</button>
 
             <div class="content-section" id="parcours">
                 <h2>Mon parcours</h2>

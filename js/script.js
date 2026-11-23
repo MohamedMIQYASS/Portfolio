@@ -108,6 +108,58 @@ function initTypewriter() {
     run();
 }
 
+function initTerminalWindow() {
+    const terminal = document.getElementById("terminal");
+    const reopen = document.getElementById("terminal-reopen");
+    if (!terminal || !reopen) return;
+
+    function setMaximized(state) {
+        terminal.classList.toggle("maximized", state);
+        document.body.classList.toggle("terminal-maximized", state);
+    }
+
+    function closeTerminal() {
+        setMaximized(false);
+        terminal.classList.add("closed");
+        reopen.hidden = false;
+    }
+
+    function reopenTerminal() {
+        terminal.classList.remove("closed", "minimized");
+        reopen.hidden = true;
+    }
+
+    function toggleMinimize() {
+        setMaximized(false);
+        terminal.style.minHeight = ""; // évite le conflit avec l'effet typewriter
+        terminal.classList.toggle("minimized");
+    }
+
+    function toggleMaximize() {
+        terminal.classList.remove("minimized");
+        setMaximized(!terminal.classList.contains("maximized"));
+    }
+
+    const actions = {
+        close: closeTerminal,
+        minimize: toggleMinimize,
+        maximize: toggleMaximize
+    };
+
+    terminal.addEventListener("click", e => {
+        const btn = e.target.closest("[data-terminal-action]");
+        if (btn) actions[btn.dataset.terminalAction]?.();
+    });
+
+    reopen.addEventListener("click", reopenTerminal);
+
+    document.addEventListener("keydown", e => {
+        if (e.key === "Escape" && terminal.classList.contains("maximized")) {
+            setMaximized(false);
+        }
+    });
+}
+
 function initNav() {
     const nav = document.querySelector("nav");
     const navUl = nav?.querySelector("ul");
@@ -285,3 +337,4 @@ initContactForm();
 initVeilleSlider();
 initTheme();
 initTypewriter();
+initTerminalWindow();
