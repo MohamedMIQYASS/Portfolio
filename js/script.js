@@ -159,6 +159,19 @@ function initTerminalWindow() {
         }
     });
 }
+function initBanner() {
+    document.querySelectorAll(".terminal-banner pre").forEach(pre => {
+        const lines = pre.textContent.replace(/\r/g, "").split("\n");
+
+        // retire les lignes vides au début et à la fin
+        while (lines.length && !lines[0].trim()) lines.shift();
+        while (lines.length && !lines[lines.length - 1].trim()) lines.pop();
+
+        // retire l'indentation commune à toutes les lignes
+        const indent = Math.min(...lines.filter(l => l.trim()).map(l => l.match(/^ */)[0].length));
+        pre.textContent = lines.map(l => l.slice(indent)).join("\n");
+    });
+}
 
 function initNav() {
     const nav = document.querySelector("nav");
@@ -330,7 +343,7 @@ function initTheme() {
 
     updateButton();
 }
-
+initBanner(); 
 initNav();
 initPopups();
 initContactForm();
