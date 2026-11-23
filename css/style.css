@@ -291,14 +291,17 @@ nav li a:hover img {
   color: var(--accent);
 }
 
-/* ===== Terminal façon Kali Linux ===== */
 .terminal {
-  --k-bg: #1e1f29;
-  --k-titlebar: #2a2c38;
-  --k-text: #dcdcdc;
-  --k-frame: #3ec63e;   /* ┌──( )-[ ] └─ */
-  --k-user: #5c8cff;    /* mohamed㉿kali et $ */
-  --k-path: #ffffff;
+  --k-bg: #f7f8fc;
+  --k-titlebar: #e4e6ee;
+  --k-text: #2b2d3a;
+  --k-frame: #1f9a1f;
+  --k-user: #1f5fe0;
+  --k-path: #111111;
+  --k-chrome: #2b2d3a;
+  --k-line: rgba(0, 0, 0, 0.10);
+  --k-hover: rgba(0, 0, 0, 0.08);
+  --k-shadow: rgba(0, 0, 0, 0.20);
 
   flex: 1 1 320px;
   width: 100%;
@@ -308,15 +311,28 @@ nav li a:hover img {
   overflow: hidden;
   background: var(--k-bg);
   color: var(--k-text);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--k-line);
   border-radius: 8px;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 12px 32px var(--k-shadow);
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
   font-family: "DejaVu Sans Mono", "Liberation Mono", Consolas, "Courier New", monospace;
   font-size: 0.95rem;
   line-height: 1.35;
 }
 
-/* Barre de titre */
+:root.dark-mode .terminal {
+  --k-bg: #1e1f29;
+  --k-titlebar: #2a2c38;
+  --k-text: #dcdcdc;
+  --k-frame: #3ec63e;
+  --k-user: #5c8cff;
+  --k-path: #ffffff;
+  --k-chrome: #e6e6e6;
+  --k-line: rgba(255, 255, 255, 0.08);
+  --k-hover: rgba(255, 255, 255, 0.12);
+  --k-shadow: rgba(0, 0, 0, 0.45);
+}
+
 .terminal_header {
   position: relative;
   display: flex;
@@ -330,7 +346,7 @@ nav li a:hover img {
 }
 
 .terminal-title {
-  color: #e6e6e6;
+  color: var(--k-chrome);
 }
 
 .buttons {
@@ -352,14 +368,14 @@ nav li a:hover img {
   border: 0;
   border-radius: 4px;
   background: transparent;
-  color: #d8d8d8;
+  color: var(--k-chrome);
   cursor: pointer;
   transition: background 0.15s;
 }
 
-.win-btn:hover { background: rgba(255, 255, 255, 0.12); }
+.win-btn:hover { background: var(--k-hover); }
 .win-close:hover { background: #d94b4b; color: #fff; }
-.win-btn:focus-visible { outline: 2px solid #fff; outline-offset: -2px; }
+.win-btn:focus-visible { outline: 2px solid var(--k-chrome); outline-offset: -2px; }
 
 .win-min::before {
   content: "";
@@ -389,15 +405,11 @@ nav li a:hover img {
   gap: 16px;
   padding: 4px 12px;
   background: var(--k-titlebar);
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid var(--k-line);
   font-family: "Cantarell", "Segoe UI", "Montserrat", sans-serif;
   font-size: 12.5px;
-  color: #d8d8d8;
+  color: var(--k-chrome);
   user-select: none;
-}
-
-.terminal-body {
-  padding: 10px 14px 16px;
 }
 
 .terminal-body {
@@ -405,9 +417,9 @@ nav li a:hover img {
 }
 
 .prompt {
-  margin-bottom: 2px;       
-  line-height: 1.2;            
-  white-space: normal;         
+  margin-bottom: 2px;
+  line-height: 1.2;
+  white-space: normal;
   overflow-wrap: anywhere;
 }
 
@@ -421,7 +433,7 @@ nav li a:hover img {
   width: max-content;
   max-width: 100%;
   font-family: inherit;
-  font-size: clamp(5px, 2.6vw, 13px);  
+  font-size: clamp(5px, 2.6vw, 13px);
   line-height: 1.1;
   white-space: pre;
   user-select: none;
@@ -432,23 +444,27 @@ nav li a:hover img {
 
 }
 
-
 .banner-title {
+  background-image: linear-gradient(90deg, #e0307f, #8a2be2, #2f5fe0);
+}
+
+:root.dark-mode .banner-title {
   background-image: linear-gradient(90deg, #ff5fa2, #b14cff, #4c7bff);
 }
 
 .banner-sub {
   margin-top: 12px !important;
   font-weight: bold;
-  background-image: linear-gradient(90deg, #ff8a3d, #ff3d8b, #a24cff);
+  background-image: linear-gradient(90deg, #e06a10, #d81b6a, #8a2be2);
 }
 
+:root.dark-mode .banner-sub {
+  background-image: linear-gradient(90deg, #ff8a3d, #ff3d8b, #a24cff);
+}
 
 .prompt .typewriter {
   white-space: pre-wrap;
 }
-
-
 
 .p-frame  { color: var(--k-frame); }
 .p-user   { color: var(--k-user); font-weight: bold; }
@@ -470,11 +486,9 @@ nav li a:hover img {
   50% { opacity: 0; }
 }
 
-/* Terminal réduit : seule la barre de titre reste */
 .terminal.minimized .terminal-menu,
 .terminal.minimized .terminal-body { display: none; }
 
-/* Terminal agrandi : plein écran */
 .terminal.maximized {
   position: fixed;
   inset: 0;
@@ -495,22 +509,28 @@ nav li a:hover img {
 
 body.terminal-maximized { overflow: hidden; }
 
-/* Terminal fermé */
 .terminal.closed { display: none; }
 
 .terminal-reopen {
   padding: 10px 18px;
-  border: 1px solid #3ec63e;
+  border: 1px solid #1f9a1f;
   border-radius: 8px;
-  background: #1e1f29;
-  color: #3ec63e;
+  background: #f7f8fc;
+  color: #1f9a1f;
   font-family: "DejaVu Sans Mono", Consolas, monospace;
   cursor: pointer;
 }
 
-.terminal-reopen:hover { background: #3ec63e; color: #1e1f29; }
-.terminal-reopen[hidden] { display: none; }
+.terminal-reopen:hover { background: #1f9a1f; color: #f7f8fc; }
 
+:root.dark-mode .terminal-reopen {
+  background: #1e1f29;
+  color: #3ec63e;
+  border-color: #3ec63e;
+}
+
+:root.dark-mode .terminal-reopen:hover { background: #3ec63e; color: #1e1f29; }
+.terminal-reopen[hidden] { display: none; }
 
 .ParcoursScolaire,
 .ParcoursPro {
