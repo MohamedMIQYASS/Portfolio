@@ -383,7 +383,6 @@ nav li a:hover img {
   line-height: 1;
 }
 
-/* Barre de menu */
 .terminal-menu {
   display: flex;
   flex-wrap: wrap;
@@ -397,23 +396,33 @@ nav li a:hover img {
   user-select: none;
 }
 
-/* Contenu */
 .terminal-body {
   padding: 10px 14px 16px;
 }
 
+.terminal-body {
+  padding: 10px 14px 12px;
+}
+
 .prompt {
-  margin-bottom: 6px;
-  white-space: pre-wrap;
+  margin-bottom: 2px;       
+  line-height: 1.2;            
+  white-space: normal;         
   overflow-wrap: anywhere;
 }
+
+
+.prompt .typewriter {
+  white-space: pre-wrap;
+}
+
+
 
 .p-frame  { color: var(--k-frame); }
 .p-user   { color: var(--k-user); font-weight: bold; }
 .p-path   { color: var(--k-path); font-weight: bold; }
 .p-dollar { color: var(--k-user); font-weight: bold; }
 
-/* Curseur bloc */
 .typewriter.typing::after {
   content: "";
   display: inline-block;
