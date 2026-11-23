@@ -58,17 +58,28 @@
             
                 <div class="terminal" id="terminal">
                     <div class="terminal_header">
+                        <span class="terminal-title">mohamed@kali: ~</span>
                         <div class="buttons">
-                            <button type="button" class="btn-red" data-terminal-action="close" aria-label="Fermer le terminal"></button>
-                            <button type="button" class="btn-yellow" data-terminal-action="minimize" aria-label="Réduire le terminal"></button>
-                            <button type="button" class="btn-green" data-terminal-action="maximize" aria-label="Agrandir le terminal"></button>
+                            <button type="button" class="win-btn win-min" data-terminal-action="minimize" aria-label="Réduire le terminal"></button>
+                            <button type="button" class="win-btn win-max" data-terminal-action="maximize" aria-label="Agrandir le terminal"></button>
+                            <button type="button" class="win-btn win-close" data-terminal-action="close" aria-label="Fermer le terminal"></button>
                         </div>
-                        <span class="terminal-title">bash</span>
                     </div>
-            
+                
+                    <div class="terminal-menu" aria-hidden="true">
+                        <span>File</span><span>Edit</span><span>View</span><span>Terminal</span><span>Tabs</span><span>Help</span>
+                    </div>
+                
                     <div class="terminal-body">
-                        <p><span class="user">mohamed@Debian</span>:<span class="path">~</span>$ <span class="typewriter">nano /var/www</span></p>
-                        <p><span class="user">mohamed@Debian</span>:<span class="path">~</span>$ <span class="typewriter">Je suis actuellement étudiant en 2ème année de BTS SIO (Services Informatiques aux Organisations) option SISR (Solutions d'infrastructures de systèmes et réseaux). Je souhaite intégrer un bachelor informatique juste après l'obtention du BTS, et à l'avenir, travailler dans le domaine de l'administration des réseaux et systèmes et de la cybersécurité. Ce portfolio vous donnera un aperçu de mon parcours, mes compétences et bien plus...</span></p>
+                        <div class="prompt">
+                            <div><span class="p-frame">┌──(</span><span class="p-user">mohamed㉿kali</span><span class="p-frame">)-[</span><span class="p-path">~</span><span class="p-frame">]</span></div>
+                            <div><span class="p-frame">└─</span><span class="p-dollar">$</span> <span class="typewriter">nano /var/www</span></div>
+                        </div>
+                
+                        <div class="prompt">
+                            <div><span class="p-frame">┌──(</span><span class="p-user">mohamed㉿kali</span><span class="p-frame">)-[</span><span class="p-path">~</span><span class="p-frame">]</span></div>
+                            <div><span class="p-frame">└─</span><span class="p-dollar">$</span> <span class="typewriter">Je suis actuellement étudiant en 2ème année de BTS SIO (...) et bien plus...</span></div>
+                        </div>
                     </div>
                 </div>
             
